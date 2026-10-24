@@ -59,6 +59,7 @@ for "_gIdx" from 0 to (_numGroups - 1) do {
             _cls
         };
         private _unit = _grp createUnit [_unitClass, _spawnSpot, [], 0, "CAN_COLLIDE"];
+        [_unit] joinSilent _grp;
         _unit setVariable ["not_Random", true, true];
         _unit setPosASL _spawnSpot;
         _unit allowDamage false;

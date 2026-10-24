@@ -59,6 +59,7 @@ private _sentinelLogics = _otherLogics select [0, 4];
         "O_G_Soldier_F"
     };
     private _sentinel = _sGrp createUnit [_sClass, _sPos, [], 0, "CAN_COLLIDE"];
+    [_sentinel] joinSilent _sGrp;
     _sentinel setVariable ["not_Random", true, true];
     _sentinel setPosATL _sPos;
     _sentinel setDir (random 360);
@@ -97,6 +98,7 @@ for "_p" from 1 to 2 do {
             "O_G_Soldier_F"
         };
         private _pGuard = _pGrp createUnit [_pGuardClass, _pStartPos, [], 0, "CAN_COLLIDE"];
+        [_pGuard] joinSilent _pGrp;
         _pGuard setVariable ["not_Random", true, true];
         _pGuard setPosATL _pStartPos;
         _pGuard allowDamage false;
@@ -126,6 +128,7 @@ private _angles = [0, 120, 240];
         "O_G_Soldier_F"
     };
     private _bg = _bgGrp createUnit [_bgClass, _bgPos, [], 0, "CAN_COLLIDE"];
+    [_bg] joinSilent _bgGrp;
     _bg setVariable ["not_Random", true, true];
     _bg setPosATL _bgPos;
     _bg setDir (_x + 180);
@@ -147,6 +150,7 @@ private _hvtClass = if (_isHvtFemale) then {
     "O_Officer_F"
 };
 private _hvt = _hvtGrp createUnit [_hvtClass, _hvtPos, [], 0, "CAN_COLLIDE"];
+[_hvt] joinSilent _hvtGrp;
 _hvt setVariable ["not_Random", true, true];
 _hvt setPosATL _hvtPos;
 _hvt setDir (random 360);

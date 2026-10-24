@@ -73,6 +73,7 @@ for "_i" from 0 to (_numSpawns - 1) do {
                 "O_G_Soldier_F"
             };
             private _guard = _grp createUnit [_guardClass, _spawnPos, [], 0, "CAN_COLLIDE"];
+            [_guard] joinSilent _grp;
             _guard setVariable ["not_Random", true, true];
             _guard setPosATL _spawnPos;
             _guard allowDamage false;
@@ -95,6 +96,7 @@ for "_i" from 0 to (_numSpawns - 1) do {
         "O_Officer_F"
     };
     private _officer = _grpOfficer createUnit [_officerClass, _spawnPos, [], 0, "CAN_COLLIDE"];
+    [_officer] joinSilent _grpOfficer;
     _officer setVariable ["not_Random", true, true];
     _officer setPosATL _spawnPos;
     _officer allowDamage false;

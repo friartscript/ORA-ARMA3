@@ -87,6 +87,7 @@ for "_i" from 0 to (_numRadios - 1) do {
                 "O_G_Soldier_F"
             };
             private _guard = _grp createUnit [_guardClass, _guardPos, [], 0, "CAN_COLLIDE"];
+            [_guard] joinSilent _grp;
             _guard setVariable ["not_Random", true, true];
             _guard setPosATL _guardPos;
             _guard allowDamage false;

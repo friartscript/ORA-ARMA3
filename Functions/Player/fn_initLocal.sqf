@@ -1,5 +1,26 @@
 if (!hasInterface) exitWith {};
 
+// Protection anti-Renegade locale pour le joueur et son escouade
+player removeAllEventHandlers "HandleRating";
+player addEventHandler ["HandleRating", {
+    params ["_unit", "_rating"];
+    if (_rating < 0) then { 0 } else { _rating };
+}];
+if (rating player < 5000) then {
+    player addRating (5000 - (rating player));
+};
+
+{
+    _x removeAllEventHandlers "HandleRating";
+    _x addEventHandler ["HandleRating", {
+        params ["_unit", "_rating"];
+        if (_rating < 0) then { 0 } else { _rating };
+    }];
+    if (rating _x < 5000) then {
+        _x addRating (5000 - (rating _x));
+    };
+} forEach (units group player);
+
 if (isNil { player getVariable ["LL_diary_briefing_added", nil] }) then {
     player setVariable ["LL_diary_briefing_added", true];
     {

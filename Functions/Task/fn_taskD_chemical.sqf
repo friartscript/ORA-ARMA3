@@ -574,6 +574,7 @@ LL_fnc_taskD_chemical_heliExtract = {
             "O_G_Soldier_F"
         };
         private _guard = _grp createUnit [_guardClass, _spawnPos, [], 0, "CAN_COLLIDE"];
+        [_guard] joinSilent _grp;
         _guard setVariable ["not_Random", true, true];
         _guard setPosASL _spawnPos;
         _guard allowDamage false;

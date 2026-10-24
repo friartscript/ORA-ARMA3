@@ -1,5 +1,4 @@
-if (!isServer) exitWith {};
-
+// Base de données des identités, tenues et armements takistanais (initialisée globalement)
 MISSION_CivilianNames_Male = [
     ["Afaq Khan", "Afaq", "Khan"], ["Akhtar Durrani", "Akhtar", "Durrani"], ["Anis Kakar", "Anis", "Kakar"],
     ["Azad Mousavi", "Azad", "Mousavi"], ["Faisal Karimi", "Faisal", "Karimi"], ["Habib Noori", "Habib", "Noori"],

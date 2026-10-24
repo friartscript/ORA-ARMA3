@@ -45,6 +45,7 @@ private _spawnedUnits = 0;
         };
         
         private _unit = _grp createUnit [_class, _bPos, [], 0, "NONE"];
+        [_unit] joinSilent _grp;
         _unit setVariable ["not_Random", true, true];
         _unit setPosASL (AGLToASL _bPos);
         

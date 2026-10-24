@@ -56,6 +56,7 @@ for "_i" from 0 to (_numGroups - 1) do {
             "O_G_Soldier_F"
         };
         private _guard = _grpEnemy createUnit [_guardClass, _guardPos, [], 0, "CAN_COLLIDE"];
+        [_guard] joinSilent _grpEnemy;
         _guard setVariable ["not_Random", true, true];
         _guard setPosATL _guardPos;
         _guard allowDamage false;

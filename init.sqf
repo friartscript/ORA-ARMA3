@@ -1,4 +1,4 @@
-if (isServer) then { [] call LL_fnc_initTakistaniDB; };
+[] call LL_fnc_initTakistaniDB;
 [] spawn LL_fnc_initSkills;
 [] execVM "Functions\Player\fn_initIdentity.sqf";
 [] execVM "Functions\Player\fn_initLoadout.sqf";
@@ -21,6 +21,12 @@ for "_i" from 0 to 5 do {
     if (isNull _u) then { _u = missionNamespace getVariable [format ["player_0%1", _i], objNull]; };
     if (!isNull _u) then {
         _u allowDamage false;
+        if (rating _u < 5000) then { _u addRating (5000 - (rating _u)); };
+        _u removeAllEventHandlers "HandleRating";
+        _u addEventHandler ["HandleRating", {
+            params ["_unit", "_rating"];
+            if (_rating < 0) then { 0 } else { _rating };
+        }];
     };
 };
 
@@ -37,6 +43,27 @@ for "_i" from 0 to 5 do {
         waitUntil { sleep 1; player != _lastPlayer && { !isNull player } };
         _lastPlayer = player;
         
+        _lastPlayer removeAllEventHandlers "HandleRating";
+        _lastPlayer addEventHandler ["HandleRating", {
+            params ["_unit", "_rating"];
+            if (_rating < 0) then { 0 } else { _rating };
+        }];
+        if (rating _lastPlayer < 5000) then {
+            _lastPlayer addRating (5000 - (rating _lastPlayer));
+        };
+        
+        _lastPlayer addEventHandler ["Respawn", {
+            params ["_newUnit", "_oldUnit"];
+            _newUnit removeAllEventHandlers "HandleRating";
+            _newUnit addEventHandler ["HandleRating", {
+                params ["_unit", "_rating"];
+                if (_rating < 0) then { 0 } else { _rating };
+            }];
+            if (rating _newUnit < 5000) then {
+                _newUnit addRating (5000 - (rating _newUnit));
+            };
+        }];
+
         _lastPlayer addEventHandler ["Killed", {
             params ["_unit"];
             [_unit] spawn LL_fnc_switchToAI;

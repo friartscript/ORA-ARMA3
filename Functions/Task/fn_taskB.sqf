@@ -31,7 +31,7 @@ missionNamespace setVariable ["LL_g_civKilledByPlayers", false, true];
 private _ehKilled = addMissionEventHandler ["EntityKilled", {
     params ["_killed", "_killer", "_instigator"];
     if (isNull _instigator) then { _instigator = _killer; };
-    if (!isNull _killed && { _killed isKindOf "CAManBase" && side group _killed == civilian }) then {
+    if (!isNull _killed && { _killed isKindOf "CAManBase" && side group _killed == civilian && !(_killed getVariable ["LL_isEnemy", false]) }) then {
         if (!isNull _instigator && { side group _instigator == independent || _instigator in (allPlayers + switchableUnits) }) then {
             missionNamespace setVariable ["LL_g_civKilledByPlayers", true, true];
         };

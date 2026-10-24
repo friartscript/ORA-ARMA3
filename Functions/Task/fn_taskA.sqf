@@ -27,11 +27,14 @@ private _targetPos = getMarkerPos _locMarker;
     false
 ] call BIS_fnc_taskCreate;
 
-// Attente de l'arrivée sur zone (550m)
+// Attente de l'arrivée sur zone (500m)
 waitUntil {
     sleep 2;
-    (player distance2D _targetPos) < 550
+    ({ alive _x && (_x distance2D _targetPos) < 500 } count (allPlayers + switchableUnits + [player])) > 0
 };
+
+// Lancement de la fonction de sécurité linguistique OPFOR (se déclenche 2 minutes après)
+[_targetPos] spawn LL_fnc_secureOpforLanguage;
 
 // Validation de la tâche
 ["task_mandatory_move", "SUCCEEDED", true] call BIS_fnc_taskSetState;

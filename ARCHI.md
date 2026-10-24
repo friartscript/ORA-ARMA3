@@ -71,6 +71,7 @@ Toutes les fonctions ci-dessous sont déclarées dans `CfgFunctions` sous le tag
 * [`Functions/Civilian/fn_spawnPresence.sqf`](file:///c:/Users/kevin/Documents/Arma%203/missions/ORA.Takistan/Functions/Civilian/fn_spawnPresence.sqf) : Instanciation de la population civile locale selon la densité des villages.
 * [`Functions/Civilian/fn_applyTakistaniIdentity.sqf`](file:///c:/Users/kevin/Documents/Arma%203/missions/ORA.Takistan/Functions/Civilian/fn_applyTakistaniIdentity.sqf) : Attribution des visages, barbes, turbans, pakols et tenues civiles orientales.
 * [`Functions/Civilian/fn_initTakistaniDB.sqf`](file:///c:/Users/kevin/Documents/Arma%203/missions/ORA.Takistan/Functions/Civilian/fn_initTakistaniDB.sqf) : Base de données des noms et identités takistanis.
+* [`Functions/Civilian/fn_secureOpforLanguage.sqf`](file:///c:/Users/kevin/Documents/Arma%203/missions/ORA.Takistan/Functions/Civilian/fn_secureOpforLanguage.sqf) : Fonction de sécurité linguistique déclenchée 2 minutes après franchissement des 500m de zone. Assigne de force la langue perse (`Male01PER`, `Male02PER`, `Male03PER`) à toutes les unités OPFOR tout en préservant strictement leur pitch audio et leurs équipements.
 
 ### 🔹 Soutien Aérien Hélicoptère & Drone (`Functions/Helicopter/` & `Functions/Drone/`)
 * [`Functions/Helicopter/fn_initSupport.sqf`](file:///c:/Users/kevin/Documents/Arma%203/missions/ORA.Takistan/Functions/Helicopter/fn_initSupport.sqf) : Initialisation du menu de Soutien natif (`CfgCommunicationMenu`, Touche 0-8).

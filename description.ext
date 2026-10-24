@@ -74,6 +74,7 @@ class CfgFunctions
             class initTakistaniDB {};
             class applyTakistaniIdentity {};
             class spawnPresence {};
+            class secureOpforLanguage {};
         };
         class Player
         {

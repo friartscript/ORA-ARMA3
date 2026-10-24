@@ -9,7 +9,7 @@ params [
 if (!hasInterface) exitWith {};
 if (_stringKey isEqualTo "") exitWith {};
 
-if (_playAudio) then {
+if (_playAudio && { isClass (missionConfigFile >> "CfgSounds" >> _stringKey) || isClass (configFile >> "CfgSounds" >> _stringKey) }) then {
     playSound _stringKey;
 };
 

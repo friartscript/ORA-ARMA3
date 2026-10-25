@@ -10,8 +10,7 @@ private _centerPos = getMarkerPos _locMarker;
 private _radius = (markerSize _locMarker) select 0;
 if (_radius == 0) then { _radius = 250; };
 private _nearHelipads = nearestObjects [_centerPos, ["Land_HelipadEmpty_F"], _radius];
-private _allLogics = allMissionObjects "Logic";
-private _nearLogics = _allLogics select { _x distance2D _centerPos <= _radius };
+private _nearLogics = nearestObjects [_centerPos, ["Logic"], _radius];
 
 private _usedPositions = missionNamespace getVariable ["LL_g_usedTaskPos", []];
 private _validSpawnPoints = (_nearLogics + _nearHelipads) select {
@@ -69,6 +68,7 @@ private _sentinelLogics = _otherLogics select [0, 4];
     [_sentinel, _isSentinelFemale, true] call LL_fnc_applyTakistaniIdentity;
     
     _allGuards pushBack _sentinel;
+    sleep 0.2;
 } forEach _sentinelLogics;
 
 private _patrolLogics = _otherLogics - _sentinelLogics;
@@ -105,10 +105,11 @@ for "_p" from 1 to 2 do {
         [_pGuard] spawn { sleep 3; (_this select 0) allowDamage true; };
         [_pGuard, _isPGuardFemale, true] call LL_fnc_applyTakistaniIdentity;
         _allGuards pushBack _pGuard;
+        sleep 0.2;
     };
 
     [_pGrp, _pStartPos, 80] call BIS_fnc_taskPatrol;
-    sleep 1;
+    sleep 0.5;
 };
 
 private _bgGrp = createGroup [east, true];
@@ -136,7 +137,10 @@ private _angles = [0, 120, 240];
     [_bg] spawn { sleep 3; (_this select 0) allowDamage true; };
     [_bg, _isBgFemale, true] call LL_fnc_applyTakistaniIdentity;
     _allGuards pushBack _bg;
+    sleep 0.2;
 } forEach _angles;
+
+sleep 0.3;
 
 private _hvtGrp = createGroup [east, true];
 _hvtGrp setBehaviour "SAFE";

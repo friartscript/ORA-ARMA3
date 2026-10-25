@@ -8,8 +8,7 @@ private _centerPos = getMarkerPos _locMarker;
 private _radius = (markerSize _locMarker) select 0;
 if (_radius == 0) then { _radius = 250; };
 private _nearHelipads = nearestObjects [_centerPos, ["Land_HelipadEmpty_F"], _radius];
-private _allLogics = allMissionObjects "Logic";
-private _nearLogics = _allLogics select { _x distance2D _centerPos <= _radius };
+private _nearLogics = nearestObjects [_centerPos, ["Logic"], _radius];
 
 private _usedPositions = missionNamespace getVariable ["LL_g_usedTaskPos", []];
 private _validSpawnPoints = (_nearLogics + _nearHelipads) select {
@@ -45,7 +44,7 @@ for "_i" from 0 to (_numGroups - 1) do {
 
     private _numGuards = 2 + floor (random 2);
     for "_g" from 1 to _numGuards do {
-        sleep 1.5;
+        sleep 0.4;
         private _guardPos = _spawnPos getPos [1 + random 3, random 360];
         _guardPos set [2, (_guardPos select 2) + 0.2];
         

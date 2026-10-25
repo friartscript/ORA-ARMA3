@@ -118,6 +118,7 @@ Toutes les fonctions ci-dessous sont déclarées dans `CfgFunctions` sous le tag
   * [`Functions/Task/fn_taskD_chemical.sqf`](file:///c:/Users/kevin/Documents/Arma%203/missions/ORA.Takistan/Functions/Task/fn_taskD_chemical.sqf) : Tâche optionnelle Chimique (Détruire les stocks chimiques). Pose d'explosifs et neutralisation de laboratoire clandestin.
   * [`Functions/Task/fn_taskD_documents.sqf`](file:///c:/Users/kevin/Documents/Arma%203/missions/ORA.Takistan/Functions/Task/fn_taskD_documents.sqf) : Tâche optionnelle Documents (Récupérer les renseignements). Fouille de bâtiment sécurisé et collecte de données sensibles.
   * [`Functions/Task/fn_taskD_tigris.sqf`](file:///c:/Users/kevin/Documents/Arma%203/missions/ORA.Takistan/Functions/Task/fn_taskD_tigris.sqf) : Tâche optionnelle Tigris (Détruire le blindé antiaérien ZSU-39 Tigris).
+  * [`Functions/Task/fn_taskBonus.sqf`](file:///c:/Users/kevin/Documents/Arma%203/missions/ORA.Takistan/Functions/Task/fn_taskBonus.sqf) : Tâche Bonus - Mission d'urgence lointaine (>= 950m). Déclenchée aléatoirement (50%) à l'issue des tâches initiales (si captif non choisi), diffuse l'ordre radio TTS du QG, crée la tâche de déplacement et lance l'objectif d'urgence (Radio, Captif, HVT ou Documents) dès franchissement des 500m.
 
 ### 🔹 Interface & Audio TTS (`Functions/UI/` & `TTS/`)
 * [`Functions/UI/fn_radioMessage.sqf`](file:///c:/Users/kevin/Documents/Arma%203/missions/ORA.Takistan/Functions/UI/fn_radioMessage.sqf) : Affichage sous-titré et restitution audio des communications radio du QG et du soutien.

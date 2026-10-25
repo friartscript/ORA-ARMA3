@@ -52,7 +52,7 @@ private _clusters = [];
     };
 } forEach _minarets;
 
-sleep (120 + random 300);
+sleep (120 + random 2280);
 
 while {true} do {
     if !(missionNamespace getVariable ["LL_ezan_playing", false]) then {
@@ -78,16 +78,6 @@ while {true} do {
                     if (_activeSpeakersToPlay findIf { (_x select 0) == _mainSpeaker } == -1) then {
                         _activeSpeakersToPlay pushBack [_mainSpeaker, 0.0];
                     };
-
-                    if (count _audibleClusters > 1) then {
-                        private _secondCluster = _audibleClusters select 1;
-                        private _secondSpeaker = _secondCluster select 1;
-                        private _distBetween = (_mainCluster select 0) distance2D (_secondCluster select 0);
-
-                        if (_distBetween >= 700 && { _activeSpeakersToPlay findIf { (_x select 0) == _secondSpeaker } == -1 }) then {
-                            _activeSpeakersToPlay pushBack [_secondSpeaker, (2.2 + random 1.2)];
-                        };
-                    };
                 };
             } forEach _alivePlayers;
 
@@ -100,7 +90,11 @@ while {true} do {
                         params ["_speaker", "_delay", "_range"];
                         if (_delay > 0) then { sleep _delay; };
                         if (!isNull _speaker) then {
-                            [_speaker, ["ezan", _range, 1]] remoteExec ["say3D", 0];
+                            if (hasInterface) then {
+                                _speaker say3D ["ezan", _range, 1];
+                            } else {
+                                [_speaker, ["ezan", _range, 1]] remoteExec ["say3D", 0];
+                            };
                         };
                     };
                 } forEach _activeSpeakersToPlay;
@@ -108,7 +102,7 @@ while {true} do {
                 sleep _EZAN_DURATION;
                 missionNamespace setVariable ["LL_ezan_playing", false, true];
 
-                sleep (1800 + random 900);
+                sleep (2700 + random 900);
             } else {
                 sleep 30;
             };

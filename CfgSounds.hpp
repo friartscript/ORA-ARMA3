@@ -332,6 +332,12 @@ class CfgSounds
         sound[] = {"TTS\output\STR_LL_Msg_Resupply_Start.ogg", db+5, 1.0};
         titles[] = {0, ""};
     };
+    class STR_LL_Radio_Emergency_Call
+    {
+        name = "STR_LL_Radio_Emergency_Call";
+        sound[] = {"TTS\output\STR_LL_Radio_Emergency_Call.ogg", db+5, 1.0};
+        titles[] = {0, ""};
+    };
     class STR_LL_RoeAction_Changed
     {
         name = "STR_LL_RoeAction_Changed";

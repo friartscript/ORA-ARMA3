@@ -33,10 +33,10 @@ missionNamespace setVariable ["LL_g_usedTaskPos", _usedPositions];
 
 _posVeh set [2, (_posVeh select 2) + 0.2];
 
-private _numGroups = 2 + floor(random 3); // 2 to 4 groups
+private _numGroups = 2 + floor(random 3);
 private _groupSizes = [];
 for "_i" from 1 to _numGroups do {
-    _groupSizes pushBack 2; // Each group has exactly 2 enemies
+    _groupSizes pushBack 2;
 };
 private _enemies = [];
 private _groups = [];
@@ -69,6 +69,7 @@ for "_gIdx" from 0 to (_numGroups - 1) do {
         _unit setSkill ["courage", 1];
         _unit allowFleeing 0;
         _enemies pushBack _unit;
+        sleep 0.2;
     };
 
     if (_gIdx == 0) then {
@@ -91,7 +92,10 @@ for "_gIdx" from 0 to (_numGroups - 1) do {
         _wp4 setWaypointType "CYCLE";
     };
     _groups pushBack _grp;
+    sleep 0.3;
 };
+
+sleep 0.4;
 
 private _dca = createVehicle ["O_APC_Tracked_02_AA_F", _posVeh, [], 0, "CAN_COLLIDE"];
 _dca setPosATL _posVeh;
@@ -219,12 +223,11 @@ private _addActionCode = {
 [_posVeh, _dca, _subVehicles, _enemies, _groups] spawn {
     params ["_posVeh", "_dca", "_subVehicles", "_enemies", "_groups"];
     
-    private _delay = 1200 + random 600; // 20 à 30 minutes de temps alloué au joueur
+    private _delay = 1200 + random 600;
     private _startTime = time;
     private _endTime = _startTime + _delay;
 
     private _lastMin = -1;
-    // Phase 1 : Attente de la neutralisation du Tigris ou expiration du compte à rebours
     while { time < _endTime && alive _dca && !(missionNamespace getVariable ["LL_TaskDTigris_Finished", false]) } do {
         private _timeLeft = _endTime - time;
         private _min = ceil (_timeLeft / 60);
@@ -242,7 +245,6 @@ private _addActionCode = {
 
     if (missionNamespace getVariable ["LL_TaskDTigris_Finished", false]) exitWith {};
 
-    // CAS 1 : Le Tigris n'a PAS été détruit dans le temps imparti -> L'avion arrive et se fait abattre
     if (alive _dca) then {
         ["STR_LL_Task_08_Plane_Incoming"] spawn LL_fnc_radioMessage;
 
@@ -287,15 +289,12 @@ private _addActionCode = {
         };
         deleteGroup _grpPlane;
     } else {
-        // CAS 2 : Le Tigris A ÉTÉ DÉTRUIT par les joueurs !
-        // 1. Validation immédiate de l'objectif DCA et déblocage de l'hélico
         [_subVehicles, [localize "STR_LL_Task_08_Desc", localize "STR_LL_Task_08_MarkerVehicles", ""]] call BIS_fnc_taskSetDescription;
         [_subVehicles, "SUCCEEDED", true] call BIS_fnc_taskSetState;
         missionNamespace setVariable ["LL_Heli_Jammed", false];
         ["STR_LL_Heli_Action_Unjammed"] spawn LL_fnc_radioMessage;
 
-        // 2. Décompte de 2 à 5 minutes pour le passage de l'avion cargo RACS
-        private _flyoverDelay = 120 + (random 180); // Entre 120s (2 min) et 300s (5 min)
+        private _flyoverDelay = 120 + (random 180);
         private _flyoverEnd = time + _flyoverDelay;
 
         private _lastFlyoverMin = -1;
@@ -310,50 +309,64 @@ private _addActionCode = {
             sleep 5;
         };
 
-        // 3. Arrivée et survol sécurisé de l'avion
         ["STR_LL_Task_08_Plane_Incoming"] spawn LL_fnc_radioMessage;
 
         private _angleIn = random 360;
-        private _dist = 3500;
+        private _dist = 2800;
         private _spawnPos = _posVeh getPos [_dist, _angleIn];
-        _spawnPos set [2, 400];
-        private _targetPos = _posVeh getPos [_dist, _angleIn + 180];
-        _targetPos set [2, 400];
+        _spawnPos set [2, 65];
 
-        private _grpPlane = createGroup [independent, true];
-        private _planeClass = if (isClass (configFile >> "CfgVehicles" >> "CUP_I_C130J_Cargo_RACS")) then { "CUP_I_C130J_Cargo_RACS" } else { "C_Plane_Civil_01_F" };
+        private _planeClass = if (isClass (configFile >> "CfgVehicles" >> "CUP_I_C130J_RACS")) then {
+            "CUP_I_C130J_RACS"
+        } else {
+            if (isClass (configFile >> "CfgVehicles" >> "CUP_I_C130J_Cargo_RACS")) then {
+                "CUP_I_C130J_Cargo_RACS"
+            } else {
+                "C_Plane_Civil_01_F"
+            }
+        };
+
         private _plane = createVehicle [_planeClass, _spawnPos, [], 0, "FLY"];
-        _plane setPosASL [_spawnPos select 0, _spawnPos select 1, 400];
+        _plane setPosATL _spawnPos;
         _plane setDir (_spawnPos getDir _posVeh);
-        _plane setVelocityModelSpace [0, 150, 0];
-        _plane flyInHeight 400;
+        _plane setVelocityModelSpace [0, 130, 0];
+        _plane flyInHeight 65;
+        _plane allowDamage false;
+
         createVehicleCrew _plane;
-        (crew _plane) joinSilent _grpPlane;
+        private _planeCrew = crew _plane;
+        { _x allowDamage false; } forEach _planeCrew;
+
+        private _grpPlane = group driver _plane;
         _grpPlane setBehaviour "CARELESS";
         _grpPlane setCombatMode "BLUE";
+        _grpPlane setSpeedMode "FULL";
 
-        private _wp1 = _grpPlane addWaypoint [_posVeh, 0];
-        _wp1 setWaypointType "MOVE";
-        _wp1 setWaypointSpeed "NORMAL";
-        _wp1 setWaypointBehaviour "CARELESS";
-        private _wp2 = _grpPlane addWaypoint [_targetPos, 0];
-        _wp2 setWaypointType "MOVE";
+        _plane doMove _posVeh;
 
-        // Attendre que l'avion traverse la zone
         private _flyStartTime = time;
         waitUntil {
-            sleep 2;
-            !alive _plane || { _plane distance2D _targetPos < 600 } || { time - _flyStartTime > 140 }
+            sleep 0.5;
+            !alive _plane || { _plane distance2D _posVeh < 250 } || { time - _flyStartTime > 60 }
+        };
+
+        private _exitPos = _posVeh getPos [4000, _spawnPos getDir _posVeh];
+        _exitPos set [2, 250];
+        _plane doMove _exitPos;
+        _plane flyInHeight 250;
+
+        waitUntil {
+            sleep 1.0;
+            !alive _plane || { _plane distance2D _posVeh > 3200 } || { time - _flyStartTime > 130 }
         };
 
         if (alive _plane) then {
-            // Survol accompli avec succès !
             ["STR_LL_Task_08_Plane_Safe"] spawn LL_fnc_radioMessage;
             ["task_tigris", [localize "STR_LL_Task_08_Desc", localize "STR_LL_Task_08_Title", ""]] call BIS_fnc_taskSetDescription;
             ["task_tigris", "SUCCEEDED", true] call BIS_fnc_taskSetState;
             missionNamespace setVariable ["LL_TaskDTigris_Finished", true];
             
-            { deleteVehicle _x; } forEach (crew _plane);
+            { deleteVehicle _x; } forEach _planeCrew;
             deleteVehicle _plane;
         } else {
             ["STR_LL_Task_08_Plane_ShotDown"] spawn LL_fnc_radioMessage;
@@ -363,7 +376,6 @@ private _addActionCode = {
         deleteGroup _grpPlane;
     };
 
-    // Nettoyage des ennemis et équipage
     private _allEnemies = [];
     { if (!isNull _x && alive _x) then { _allEnemies pushBack _x; }; } forEach _enemies;
     if (!isNull _dca) then {

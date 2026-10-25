@@ -43,6 +43,7 @@ class CfgFunctions
             class taskD_chemical {};
             class taskD_documents {};
             class taskD_tigris {};
+            class taskBonus {};
             class extraction {};
             class extraction_secure {};
         };

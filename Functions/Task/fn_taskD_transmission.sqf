@@ -10,8 +10,7 @@ private _centerPos = getMarkerPos _locMarker;
 private _radius = (markerSize _locMarker) select 0;
 if (_radius == 0) then { _radius = 250; };
 private _nearHelipads = nearestObjects [_centerPos, ["Land_HelipadEmpty_F"], _radius];
-private _allLogics = allMissionObjects "Logic";
-private _nearLogics = _allLogics select { _x distance2D _centerPos <= _radius };
+private _nearLogics = nearestObjects [_centerPos, ["Logic"], _radius];
 
 private _usedPositions = missionNamespace getVariable ["LL_g_usedTaskPos", []];
 private _validSpawnPoints = (_nearLogics + _nearHelipads) select {
@@ -69,7 +68,6 @@ for "_i" from 0 to (_numRadios - 1) do {
 
     private _zoneGuards = [];
     
-    // Spawn des patrouilles de gardes Takistanis
     private _numPatrols = 1 + floor (random 2);
     for "_p" from 1 to _numPatrols do {
         private _grp = createGroup [east, true];
@@ -94,6 +92,7 @@ for "_i" from 0 to (_numRadios - 1) do {
             [_guard] spawn { sleep 3; (_this select 0) allowDamage true; };
             [_guard, _isGuardFemale, true] call LL_fnc_applyTakistaniIdentity;
             _zoneGuards pushBack _guard;
+            sleep 0.2;
         };
         [_grp, _spawnPos, 40 + random 60] call BIS_fnc_taskPatrol;
     };

@@ -9,6 +9,8 @@ params [
 ];
 
 private _targetPos = getMarkerPos _locMarker;
+private _radius = (markerSize _locMarker) select 0;
+if (_radius == 0) then { _radius = 350; };
 
 [
     true,
@@ -38,8 +40,10 @@ private _ehKilled = addMissionEventHandler ["EntityKilled", {
     };
 }];
 
-{ _x setVariable ["LL_logic_occupied", false]; } forEach (allMissionObjects "Logic" + allMissionObjects "Land_HelipadEmpty_F");
+{ _x setVariable ["LL_logic_occupied", false]; } forEach (nearestObjects [_targetPos, ["Logic", "Land_HelipadEmpty_F"], _radius + 150]);
 missionNamespace setVariable ["LL_g_usedTaskPos", []];
+
+sleep 3.0;
 
 {
     private _taskId = _x;
@@ -51,8 +55,10 @@ missionNamespace setVariable ["LL_g_usedTaskPos", []];
         case "TASK_DOCUMENTS": { [_locMarker] spawn LL_fnc_taskD_documents; };
         case "TASK_TIGRIS": { [_locMarker] spawn LL_fnc_taskD_tigris; };
     };
-    sleep 0.5;
+    sleep 5.0;
 } forEach _optionalTasks;
+
+[_locMarker, _optionalTasks] spawn LL_fnc_taskBonus;
 
 waitUntil {
     sleep 1;

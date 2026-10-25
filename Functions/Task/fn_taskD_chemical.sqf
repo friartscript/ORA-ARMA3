@@ -9,8 +9,7 @@ private _radius = (markerSize _locMarker) select 0;
 if (_radius == 0) then { _radius = 250; };
 
 private _nearHelipads = nearestObjects [_centerPos, ["Land_HelipadEmpty_F"], _radius];
-private _allLogics = allMissionObjects "Logic";
-private _nearLogics = _allLogics select { _x distance2D _centerPos <= _radius };
+private _nearLogics = nearestObjects [_centerPos, ["Logic"], _radius];
 
 private _usedPositions = missionNamespace getVariable ["LL_g_usedTaskPos", []];
 private _validSpawnPoints = _nearHelipads select {
@@ -581,9 +580,9 @@ LL_fnc_taskD_chemical_heliExtract = {
         [_guard] spawn { sleep 3; (_this select 0) allowDamage true; };
         [_guard, _isGuardFemale, true] call LL_fnc_applyTakistaniIdentity;
         _allUnits pushBack _guard;
+        sleep 0.2;
     };
     
-    // Add simple patrol
     private _wp1 = _grp addWaypoint [_spawnPos getPos [30, random 360], 0];
     _wp1 setWaypointType "MOVE";
     _wp1 setWaypointSpeed "LIMITED";
@@ -594,6 +593,8 @@ LL_fnc_taskD_chemical_heliExtract = {
     _wp3 setWaypointType "MOVE";
     private _wp4 = _grp addWaypoint [waypointPosition _wp1, 0];
     _wp4 setWaypointType "CYCLE";
+
+    sleep 0.3;
 
     private _truckClasses = ["O_Truck_02_fuel_F", "O_Truck_03_fuel_F", "I_Truck_02_fuel_F"];
     private _truck = createVehicle [selectRandom _truckClasses, _spawnPos, [], 0, "CAN_COLLIDE"];

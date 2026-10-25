@@ -149,12 +149,14 @@ def generate_cfg_sounds(output_dir, cfg_path):
             f.write(f'        sound[] = {{"TTS\\output\\{key_id}.ogg", db+5, 1.0}};\n')
             f.write(f'        titles[] = {{0, ""}};\n')
             f.write(f'    }};\n')
+        f.write('    class Sound_Music_Intro\n    {\n        name = "Sound_Music_Intro";\n        sound[] = {"Music\\Shadow_of_the_Valley_01.ogg", db+0, 1.0};\n        titles[] = {0, ""};\n    };\n')
+        f.write('    class ezan\n    {\n        name = "ezan";\n        sound[] = {"Music\\ezan.ogg", db+12, 1.0, 2000};\n        titles[] = {0, ""};\n    };\n')
         f.write('};\n')
     print(f"[CfgSounds] Généré avec succès ({len(sounds)} sons) dans {cfg_path}")
 
 def is_tts_key(key_id):
     # Clés liées aux messages radio et PNJ
-    prefixes = ("STR_Drone_", "STR_LL_Heli_", "STR_LL_Msg_", "STR_TAG_Msg_")
+    prefixes = ("STR_Drone_", "STR_LL_Heli_", "STR_LL_Msg_", "STR_TAG_Msg_", "STR_LL_Radio_")
     if key_id.startswith(prefixes):
         return True
     # Clés liées aux dialogues (STR_LL_Task_XX_S1, etc.)

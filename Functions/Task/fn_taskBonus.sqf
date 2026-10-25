@@ -84,12 +84,14 @@ private _targetPos = getMarkerPos _bonusMarker;
         localize "STR_LL_Task_Bonus_Move_Marker"
     ],
     _targetPos,
-    "AUTOASSIGNED",
+    "ASSIGNED",
     10,
     true,
     "move",
     false
 ] call BIS_fnc_taskCreate;
+
+["task_bonus_move", true] call BIS_fnc_taskSetCurrent;
 
 waitUntil {
     sleep 2;
@@ -130,4 +132,10 @@ switch (_chosenTask) do {
     case "TASK_HVT": { [_bonusMarker] spawn LL_fnc_taskD_hvt; };
     case "TASK_TRANSMISSION": { [_bonusMarker] spawn LL_fnc_taskD_transmission; };
     case "TASK_DOCUMENTS": { [_bonusMarker] spawn LL_fnc_taskD_documents; };
+};
+
+[_taskA3Id] spawn {
+    params ["_taskA3Id"];
+    waitUntil { sleep 0.5; [_taskA3Id] call BIS_fnc_taskExists };
+    [_taskA3Id, true] call BIS_fnc_taskSetCurrent;
 };

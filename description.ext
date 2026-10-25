@@ -76,6 +76,7 @@ class CfgFunctions
             class applyTakistaniIdentity {};
             class spawnPresence {};
             class secureOpforLanguage {};
+            class rebelAmbush {};
         };
         class Player
         {

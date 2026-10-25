@@ -47,6 +47,11 @@ if (_mode == "OPEN") exitWith {
         };
     };
 
+    private _cbRebel = _display displayCtrl 7120;
+    if (!isNull _cbRebel) then {
+        _cbRebel cbSetChecked false;
+    };
+
     private _currentHour = date select 3;
     private _currentOvercast = overcast;
     private _currentFog = fog;
@@ -342,6 +347,7 @@ if (_mode == "LAUNCH") exitWith {
     private _fog = parseNumber (_ctrlFog lbData (lbCurSel _ctrlFog));
     private _selectedLocationMarker = _locCtrl lbData (lbCurSel _locCtrl);
     private _selectedInsertion = _insCtrl lbData (lbCurSel _insCtrl);
+    private _rebelAmbushEnabled = cbChecked (_display displayCtrl 7120);
     
     closeDialog 0;
     
@@ -444,6 +450,10 @@ if (_mode == "LAUNCH") exitWith {
 
     [_dropPosCenter] spawn LL_fnc_ambientSheep;
     [_targetPos] spawn LL_fnc_ambientSheep;
+
+    if (_rebelAmbushEnabled) then {
+        [_dropPosCenter, _targetPos] spawn LL_fnc_rebelAmbush;
+    };
 
     // Lancement du gestionnaire dynamique des tâches
     [_selectedLocationMarker, _selectedInsertion, _selectedTasks] spawn LL_fnc_task_generator;

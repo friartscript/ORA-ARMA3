@@ -2295,6 +2295,23 @@ Ağ doluysa istekleriniz reddedilebilir veya kesintiye uğrayabilir.&lt;br/&gt;&
             <Chinese>&lt;t color='#FFFF00' size='0.85'&gt;战术指令：&lt;br/&gt;- 最多选择1至3个任务。&lt;br/&gt;- 必须通过支援菜单（0-8-3）手动呼叫撤离。&lt;br/&gt;- 通过操作菜单管理小队的交战规则。&lt;br/&gt;- 若无人质护送，指挥部可能会在行动期间指派紧急作战任务。&lt;/t&gt;</Chinese>
             <Chinesesimp>&lt;t color='#FFFF00' size='0.85'&gt;战术指令：&lt;br/&gt;- 最多选择1至3个任务。&lt;br/&gt;- 必须通过支援菜单（0-8-3）手动呼叫撤离。&lt;br/&gt;- 通过操作菜单管理小队的交战规则。&lt;br/&gt;- 若无人质护送，指挥部可能会在行动期间指派紧急作战任务。&lt;/t&gt;</Chinesesimp>
         </Key>
+        <Key ID="STR_OPTION_REBEL_AMBUSH">
+            <Original>Insurgent Threat (Rare civilian ambushes)</Original>
+            <English>Insurgent Threat (Rare civilian ambushes)</English>
+            <French>Menace insurgée (Rares embuscades civiles)</French>
+            <Spanish>Amenaza insurgente (Raras emboscadas civiles)</Spanish>
+            <German>Aufständischen-Bedrohung (Seltene Zivilisten-Hinterhalte)</German>
+            <Italian>Minaccia ribelle (Rare imboscate civili)</Italian>
+            <Polish>Zagrożenie powstańcze (Rzadkie zasadzki cywilne)</Polish>
+            <Portuguese>Ameaça insurgente (Raras emboscadas civis)</Portuguese>
+            <Russian>Угроза повстанцев (Редкие засады в гражданском)</Russian>
+            <Czech>Povstalecká hrozba (Vzácné léčky civilistů)</Czech>
+            <Korean>반군 위협 (드문 민간인 위장 매복)</Korean>
+            <Japanese>反乱軍の脅威 (民間人に偽装した奇襲)</Japanese>
+            <Chinese>叛軍威脅 (罕見的平民偽裝伏擊)</Chinese>
+            <Chinesesimp>叛军威胁 (罕见的平民伪装伏击)</Chinesesimp>
+            <Turkish>İsyancı Tehdidi (Nadir sivil pusuları)</Turkish>
+        </Key>
     </Package>
     <Package name="Task">
         <Key ID="STR_LL_Task_Extraction_Title">

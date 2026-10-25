@@ -910,7 +910,31 @@ class Refour_Main_Menu_Dialog
             h = 0.025 * safezoneH;
         };
 
+        class DividerAmbush: RscText {
+            idc = -1;
+            x = safezoneX + (0.03 * safezoneW);
+            y = safezoneY + (0.435 * safezoneH);
+            w = 0.28 * safezoneW;
+            h = 0.002 * safezoneH;
+            colorBackground[] = {1, 1, 1, 0.2};
+        };
 
+        class CB_RebelAmbush: RscCheckBox {
+            idc = 7120;
+            x = safezoneX + (0.03 * safezoneW);
+            y = safezoneY + (0.45 * safezoneH);
+            w = 0.015 * safezoneW;
+            h = 0.025 * safezoneH;
+        };
+        class Txt_RebelAmbush: RscText {
+            idc = -1;
+            text = "$STR_OPTION_REBEL_AMBUSH";
+            x = safezoneX + (0.05 * safezoneW);
+            y = safezoneY + (0.45 * safezoneH);
+            w = 0.26 * safezoneW;
+            h = 0.025 * safezoneH;
+            colorText[] = {0.95, 0.75, 0.2, 1};
+        };
 
         class Txt_Rules: RscStructuredText {
             idc = -1;

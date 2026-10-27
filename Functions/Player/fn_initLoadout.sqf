@@ -48,6 +48,11 @@ private _goggles = [
     "CUP_G_ESS_KHK_Facewrap_Tan",
     "G_Bandana_khk"
 ];
+private _binoculars = [
+    "CUP_LRTV",
+    "CUP_Vector21Nite",
+    "CUP_SOFLAM"
+];
 
 private _squad = [];
 for "_i" from 0 to 5 do {
@@ -73,6 +78,7 @@ if (!isNull player && { count _squad < 6 }) then {
     private _newVest = selectRandom _vests;
     private _newHelmet = selectRandom _helmets;
     private _newGoggles = selectRandom _goggles;
+    private _newBinocular = selectRandom _binoculars;
     private _newBackpack = if (_hasLauncher) then { "B_Kitbag_cbr" } else { selectRandom _backpacks };
     
     if (count (_loadout select 3) > 0) then {
@@ -95,11 +101,23 @@ if (!isNull player && { count _squad < 6 }) then {
 
     _loadout set [6, _newHelmet];
     _loadout set [7, _newGoggles];
+    _loadout set [8, [_newBinocular, "", "", "", [], [], ""]];
     
     _unit setUnitLoadout _loadout;
 
     if (backpack _unit == "") then {
         _unit addBackpack _newBackpack;
+    };
+
+    if (binocular _unit != _newBinocular) then {
+        if (binocular _unit != "") then {
+            _unit removeWeapon (binocular _unit);
+        };
+        _unit addWeapon _newBinocular;
+    };
+
+    if (_newBinocular == "CUP_SOFLAM" && { !("Laserbatteries" in magazines _unit) }) then {
+        _unit addMagazine "Laserbatteries";
     };
     
     [_unit] call LL_fnc_badgeManager;

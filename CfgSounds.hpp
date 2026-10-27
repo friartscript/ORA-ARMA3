@@ -392,6 +392,12 @@ class CfgSounds
         sound[] = {"Music\Shadow_of_the_Valley_01.ogg", db+0, 1.0};
         titles[] = {0, ""};
     };
+    class LL_Charge_Beep
+    {
+        name = "LL_Charge_Beep";
+        sound[] = {"A3\Sounds_F\sfx\beep_target.wss", db+8, 1.0};
+        titles[] = {0, ""};
+    };
     class ezan
     {
         name = "ezan";

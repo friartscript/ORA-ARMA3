@@ -53,7 +53,7 @@
         - CUP_U_B_USMC_MCCUU_des_roll_pads
         - CUP_U_B_USMC_MCCUU_des_roll_pads_gloves
         - CUP_U_B_USMC_MCCUU_des
-Les cagoules sont : 
+- Les cagoules / lunettes sont : 
         - CUP_G_Tan_Scarf_Shades_GPSCombo_Beard
         - CUP_G_Tan_Scarf_Shades_GPS_Beard
         - CUP_G_Tan_Scarf_GPS
@@ -64,9 +64,12 @@ Les cagoules sont :
         - CUP_G_ESS_KHK_Scarf_Tan_GPS_Beard
         - CUP_G_ESS_KHK_Facewrap_Tan
         - G_Bandana_khk
-LNV : NVGooglesB_blk_F
-Jummelles : CUP_LRTV
-grenades : M67
-fumigène blanc
+- Les jumelles / télémètres sont : 
+        - CUP_LRTV
+        - CUP_Vector21Nite
+        - CUP_SOFLAM
+- JVN / Lunettes de vision nocturne (NVG) : NVGogglesB_blk_F
+- Grenades : HandGrenade (ou M67)
+- Fumigènes : SmokeShell (blanc), SmokeShellGreen (vert)
 
 ## véhicules ennemis :

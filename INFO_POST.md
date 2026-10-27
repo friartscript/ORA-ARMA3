@@ -300,7 +300,7 @@ Ce document regroupe les formats de publications (petits, moyens, grands) en **f
 | :--- | :---: | :--- |
 | **🔊 Immersion Sonore & Atmosphère** | **19 / 20** | **Exceptionnel.** Pipeline vocal militaire Lo-Fi (plus de 64 répliques avec filtres radio réels et Roger beeps), ambiance culturelle avec l'Ezân spatialisé depuis les minarets, post-processing cinématique et musiques soignées. |
 | **🎯 Game Design & Rejouabilité** | **18.5 / 20** | **Remarquable.** Panneau tactique complet, modularité des 6 objectifs, synchronisation automatique du coffre du véhicule avec vos armes, soutiens complets (CAS, drone, largages) et mission d'urgence surprise. |
-| **⚡ Architecture Technique & Fluidité** | **18 / 20** | **Très Solide.** Conception Single-Player optimisée sans surcharge réseau, gestion anti-glitch (+0.2m Z, CAN_COLLIDE), échelonnement des spawns à 500m évitant les chutes de FPS, et support natif de 12 langues. |
+| **⚡ Architecture Technique & Fluidité** | **18 / 20** | **Très Solide.** Conception Single-Player optimisée sans surcharge réseau, gestion anti-glitch (+0.2m Z, CAN_COLLIDE), échelonnement des spawns à 500m évitant les chutes de FPS, et support natif de 11 langues. |
 | **🖥️ Interface & Ergonomie (QoL)** | **17.5 / 20** | **Très Bon.** Menu avec prévisualisation 3D en direct du véhicule, commandes claires au menu molette et 0-8, guidage ATH actif sur la mission bonus. Une interface tablette type PDA en jeu parachèverait l'ensemble. |
 | **🏆 NOTE GLOBALE** | **18.25 / 20** | **Coup de Cœur Solo MilSim.** Une des missions solo les plus immersives et techniques disponibles sur Arma 3. |
 
@@ -318,7 +318,7 @@ Ce document regroupe les formats de publications (petits, moyens, grands) en **f
    Le fait qu'un ordre radio QG inopiné puisse tomber en fin de mission pour vous projeter vers une nouvelle zone à plus d'1 km rompt la routine prévisible de fin d'opération et donne une utilité concrète aux ravitaillements et véhicules.
 5. **La suite de soutien tactique (Menu 0-8) :**  
    Drone de reconnaissance thermique, frappes hélicoptère CAS et largages parachutés offrent une vraie boîte à outils tactique adaptée aux situations imprévues.
-6. **Le Multilinguisme Natif (12 Langues) :**  
+6. **Le Multilinguisme Natif (11 Langues) :**  
    Très rare sur le Workshop Arma : la mission est immédiatement jouable par toute la communauté internationale sans barrière linguistique.
 
 ---

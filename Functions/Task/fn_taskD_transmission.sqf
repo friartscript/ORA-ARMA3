@@ -147,8 +147,58 @@ for "_i" from 0 to (_numRadios - 1) do {
             [_radio, _charge, _taskChildId] spawn {
                 params ["_radio", "_charge", "_taskChildId"];
                 
-                sleep 40; 
-                
+                // Lumière orange douce réhaussée et bien visible dans la nuit (diode / balise)
+                private _light = "#lightpoint" createVehicleLocal (getPosATL _charge);
+                _light attachTo [_charge, [0, 0, 0.15]];
+                _light setLightColor [1.0, 0.45, 0.05];
+                _light setLightAmbient [0.25, 0.1, 0.02];
+                _light setLightBrightness 0.15;
+                _light setLightAttenuation [0.5, 1, 0, 0.5, 1, 5];
+                _light setLightDayLight true;
+                _light setLightUseFlare true;
+                _light setLightFlareSize 0.25;
+                _light setLightFlareMaxDistance 60;
+
+                // Phase 1 : 25 secondes d'attente (permet au joueur d'évacuer la zone)
+                private _elapsed = 0;
+                while { _elapsed < 25 && !isNull _radio && !isNull _charge } do {
+                    sleep 1;
+                    _elapsed = _elapsed + 1;
+                };
+
+                // Phase 2 : Les 15 dernières secondes avant l'explosion (bips accélérés et flashs orange synchronisés)
+                private _steps = [
+                    [4, 1.5, 1.0],    // 4 bips espacés de 1.5s  -> 6.0s (T-15s à T-9s)
+                    [5, 0.8, 1.1],    // 5 bips espacés de 0.8s  -> 4.0s (T-9s à T-5s)
+                    [6, 0.5, 1.2],    // 6 bips espacés de 0.5s  -> 3.0s (T-5s à T-2s)
+                    [6, 0.22, 1.35],  // 6 bips espacés de 0.22s -> 1.32s (T-2s à T-0.7s)
+                    [7, 0.10, 1.5]    // 7 bips ultra-rapides    -> 0.70s (T-0.7s à T-0s)
+                ];
+
+                {
+                    _x params ["_count", "_interval", "_pitch"];
+                    for "_i" from 1 to _count do {
+                        if (isNull _radio || isNull _charge) exitWith {};
+                        
+                        // Flash orange et son natif Arma 3 de bip en 3D
+                        if (!isNull _light) then {
+                            _light setLightBrightness 0.5;
+                            _light setLightFlareSize 0.5;
+                        };
+                        playSound3D ["A3\Sounds_F\sfx\beep_target.wss", _charge, false, getPosASL _charge, 2.8, _pitch, 60];
+                        
+                        sleep 0.06;
+                        if (!isNull _light) then {
+                            _light setLightBrightness 0.15;
+                            _light setLightFlareSize 0.25;
+                        };
+                        sleep ((_interval - 0.06) max 0.01);
+                    };
+                    if (isNull _radio || isNull _charge) exitWith {};
+                } forEach _steps;
+
+                // Nettoyage de la lumière et de la charge avant la détonation
+                if (!isNull _light) then { deleteVehicle _light; };
                 if (!isNull _charge) then { deleteVehicle _charge; };
                 
                 private _pos = getPosATL _radio;

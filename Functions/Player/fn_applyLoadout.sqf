@@ -83,7 +83,9 @@ if (_hWeapon != "") then {
 };
 if (_sWeapon != "") then { _unit addWeapon _sWeapon; };
 
-_unit addWeapon "CUP_LRTV";
+private _bino = selectRandom ["CUP_LRTV", "CUP_Vector21Nite", "CUP_SOFLAM"];
+_unit addWeapon _bino;
+if (_bino == "CUP_SOFLAM") then { _unit addMagazine "Laserbatteries"; };
 _unit linkItem "ItemMap";
 _unit linkItem "ItemCompass";
 _unit linkItem "ItemWatch";

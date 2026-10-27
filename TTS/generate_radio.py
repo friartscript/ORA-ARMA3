@@ -4,8 +4,21 @@ import xml.etree.ElementTree as ET
 import subprocess
 import numpy as np
 import random
+import soundfile as sf
+from kokoro import KPipeline
 from pydub import AudioSegment
 from pydub.generators import Sine, WhiteNoise
+
+# Configuration de la voix Kokoro (Anglais américain 'a') :
+# - 'am_fenrir' : Voix masculine grave, rauque, éraillée / criarde (style opérateur radio sous tension)
+# - 'am_adam'   : Voix masculine grave et autoritaire
+# - 'am_onyx'   : Voix masculine très profonde et lourde
+KOKORO_LANG = "a"
+KOKORO_VOICE = "am_fenrir"
+KOKORO_SPEED = 1.08  # Débit radio militaire tendu et rythmé
+
+# Initialisation du pipeline Kokoro TTS
+_pipeline = KPipeline(lang_code=KOKORO_LANG)
 
 # Ajouter ffmpeg et ffprobe au PATH système pour cette exécution
 ffmpeg_bin_path = r"C:\Users\kevin\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-9.0.1-full_build\bin"
@@ -18,6 +31,7 @@ AudioSegment.converter = os.path.join(ffmpeg_bin_path, "ffmpeg.exe")
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 XML_PATH = os.path.join(ROOT_DIR, "stringtable.xml")
 OUTPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "output")
+FORCE_REGENERATE = True  # Mettre à True pour écraser et régénérer tous les fichiers avec Kokoro
 
 def clean_text(text):
     if not text:
@@ -41,11 +55,16 @@ def clean_text(text):
 def apply_radio_effect(audio, intensity=1.5):
     # --- VARIATION ALÉATOIRE PAR MESSAGE ---
     # Chaque message est légèrement différent pour éviter l'effet "source unique parfaite"
-    rng_gain      = random.uniform(-2.0, 2.0)
-    rng_hp        = random.randint(280, 420)
-    rng_lp        = random.randint(2200, 2900)
+    rng_gain      = random.uniform(-1.0, 3.0)
+    rng_hp        = random.randint(260, 380)
+    rng_lp        = random.randint(2300, 3100)
     rng_noise_lvl = random.uniform(-2.0, 2.0)
-    rng_clip      = random.uniform(0.30, 0.55)
+    rng_clip      = random.uniform(0.24, 0.42)  # Clipping plus agressif pour un son criard / saturé
+
+    # 0. Abaissement du pitch pour une voix d'homme plus grave et martiale
+    pitch_factor = 0.93  # Abaissement du timbre
+    lower_rate = int(audio.frame_rate * pitch_factor)
+    audio = audio._spawn(audio.raw_data, overrides={'frame_rate': lower_rate}).set_frame_rate(audio.frame_rate)
 
     # 1. Dégradation bit-crushing AVANT normalisation
     radio = audio.set_frame_rate(8000).set_sample_width(1)
@@ -54,8 +73,8 @@ def apply_radio_effect(audio, intensity=1.5):
     radio = radio.high_pass_filter(rng_hp).low_pass_filter(rng_lp)
     radio = radio.high_pass_filter(rng_hp + 80).low_pass_filter(rng_lp - 200)
 
-    # 3. Saturation + Hard Clipping via numpy
-    radio = radio.apply_gain(rng_gain + 8)
+    # 3. Saturation + Hard Clipping via numpy (voix criarde / intercom militaire)
+    radio = radio.apply_gain(rng_gain + 10)
     samples = np.array(radio.get_array_of_samples(), dtype=np.float32)
     max_val = np.iinfo(radio.array_type).max
     samples /= max_val
@@ -128,12 +147,9 @@ def apply_radio_effect(audio, intensity=1.5):
     return final
 
 
-def generate_tts(text, output_path):
-    # Utilisation de edge-tts avec voix masculine normale
-    voice = "en-US-GuyNeural"
-    edge_tts_path = r"C:\Users\kevin\AppData\Local\Programs\Python\Python312\Scripts\edge-tts.exe"
-    cmd = [edge_tts_path, "--voice", voice, "--rate=+0%", "--text", text, "--write-media", output_path]
-    subprocess.run(cmd, check=True)
+def generate_tts(text, output_path, key_id="", speed=KOKORO_SPEED, voice=KOKORO_VOICE):
+    chunks = [a for _, _, a in _pipeline(text, voice=voice, speed=speed)]
+    sf.write(output_path, np.concatenate(chunks), 24000)  # sortie en .wav
 
 def generate_cfg_sounds(output_dir, cfg_path):
     sounds = []
@@ -149,6 +165,7 @@ def generate_cfg_sounds(output_dir, cfg_path):
             f.write(f'        sound[] = {{"TTS\\output\\{key_id}.ogg", db+5, 1.0}};\n')
             f.write(f'        titles[] = {{0, ""}};\n')
             f.write(f'    }};\n')
+        f.write('    class LL_Charge_Beep\n    {\n        name = "LL_Charge_Beep";\n        sound[] = {"A3\\Sounds_F\\sfx\\beep_target.wss", db+8, 1.0};\n        titles[] = {0, ""};\n    };\n')
         f.write('    class Sound_Music_Intro\n    {\n        name = "Sound_Music_Intro";\n        sound[] = {"Music\\Shadow_of_the_Valley_01.ogg", db+0, 1.0};\n        titles[] = {0, ""};\n    };\n')
         f.write('    class ezan\n    {\n        name = "ezan";\n        sound[] = {"Music\\ezan.ogg", db+12, 1.0, 2000};\n        titles[] = {0, ""};\n    };\n')
         f.write('};\n')
@@ -178,7 +195,7 @@ def main():
     root = tree.getroot()
     
     count = 0
-    temp_file = os.path.join(OUTPUT_DIR, "temp.mp3")
+    temp_file = os.path.join(OUTPUT_DIR, "temp.wav")
     
     for key in root.findall(".//Key"):
         key_id = key.get("ID")
@@ -186,36 +203,36 @@ def main():
         if not is_tts_key(key_id):
             continue
             
-        english_node = key.find("English")
+        # Utilisation de la version anglaise (voix d'homme en anglais)
+        node = key.find("English")
+        if node is None or not node.text:
+            node = key.find("Original")
         
-        if english_node is not None and english_node.text:
-            text = clean_text(english_node.text)
+        if node is not None and node.text:
+            text = clean_text(node.text)
             
             if not text:
                 continue
                 
             out_file = os.path.join(OUTPUT_DIR, f"{key_id}.ogg")
             
-            # Skip if file already exists
-            if os.path.exists(out_file):
+            # Skip if file already exists (sauf si FORCE_REGENERATE est activé)
+            if os.path.exists(out_file) and not FORCE_REGENERATE:
                 continue
                 
-            print(f"[TTS] Génération pour {key_id} : '{text}'")
+            print(f"[TTS] Génération Kokoro pour {key_id} : '{text}'")
             
             try:
-                # 1. Générer le TTS avec la voix d'homme Microsoft Azure
-                generate_tts(text, temp_file)
+                # 1. Générer le TTS avec Kokoro (format .wav)
+                generate_tts(text, temp_file, key_id=key_id)
                 
-                # 2. Appliquer les gros effets radio
-                audio = AudioSegment.from_mp3(temp_file)
+                # 2. Charger le .wav et appliquer les effets radio militaires
+                audio = AudioSegment.from_wav(temp_file)
                 radio_audio = apply_radio_effect(audio)
                 
-                # 3. Sauvegarder (écrase l'ancien)
+                # 3. Sauvegarder en OGG (format Arma 3)
                 radio_audio.export(out_file, format="ogg")
                 count += 1
-                
-                import time
-                time.sleep(1) # Pause d'une seconde pour éviter le rate-limit de Microsoft Edge TTS
                 
             except Exception as e:
                 print(f"Erreur sur {key_id} : {e}")

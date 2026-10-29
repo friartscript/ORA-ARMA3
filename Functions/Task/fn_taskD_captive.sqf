@@ -172,7 +172,7 @@ _hostage addAction [
 ];
 
 [
-    true,
+    group player,
     ["task_d_captive"],
     [
         localize "STR_LL_Task_00_Desc",

@@ -42,15 +42,18 @@ missionNamespace setVariable ["LL_TaskD_Trans_AllUnits", [], true];
 missionNamespace setVariable ["LL_TaskD_Trans_Destroyed", 0, true];
 missionNamespace setVariable ["LL_TaskD_Trans_Total", _numRadios, true];
 
+private _firstLogicPos = getPosATL (_selectedLogics select 0);
+if (_firstLogicPos isEqualTo [0,0,0]) then { _firstLogicPos = getPos (_selectedLogics select 0); };
+
 [
-    true,
+    group player,
     ["task_d_transmission"],
     [
         localize "STR_LL_Task_D_Transmission_Desc",
         localize "STR_LL_Task_D_Transmission_Title",
         localize "STR_LL_Task_D_Transmission_Marker"
     ],
-    objNull,
+    _firstLogicPos,
     "AUTOASSIGNED",
     5,
     true,
@@ -112,7 +115,7 @@ for "_i" from 0 to (_numRadios - 1) do {
 
     private _taskChildId = format ["task_d_transmission_radio_%1", _i];
     [
-        true,
+        group player,
         [_taskChildId, "task_d_transmission"],
         [
             localize "STR_LL_Task_D_Transmission_Sub_Desc",
@@ -220,6 +223,10 @@ for "_i" from 0 to (_numRadios - 1) do {
                     private _guards = _allUnits select { alive _x };
                     if (count _guards > 0) then {
                         [_guards] spawn LL_fnc_taskCleanup;
+                    };
+                } else {
+                    if (["task_d_transmission_radio_1"] call BIS_fnc_taskExists) then {
+                        ["task_d_transmission_radio_1", true] call BIS_fnc_taskSetCurrent;
                     };
                 };
             };

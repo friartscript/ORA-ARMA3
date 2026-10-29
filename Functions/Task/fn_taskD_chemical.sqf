@@ -236,13 +236,15 @@ LL_fnc_taskD_chemical_heliExtract = {
     } forEach _crew;
 
     private _cargoPosASL = getPosASL _cargo;
+    private _cargoX = _cargoPosASL select 0;
+    private _cargoY = _cargoPosASL select 1;
     private _cargoASL = _cargoPosASL select 2;
-    private _transitAlt = 65;
-    private _hoverHeight = 5;
+    private _transitAlt = 45;
+    private _hoverHeight = 7.5;
 
     _heli flyInHeight _transitAlt;
     _heli flyInHeightASL [_cargoASL + _transitAlt, _cargoASL + _transitAlt, _cargoASL + _transitAlt];
-    _heli limitSpeed 70;
+    _heli limitSpeed 60;
 
     while { count (waypoints _grp) > 0 } do { deleteWaypoint [_grp, 0]; };
     private _wpTransit = _grp addWaypoint [getPos _cargo, 0];
@@ -264,34 +266,30 @@ LL_fnc_taskD_chemical_heliExtract = {
         deleteGroup _grp;
     };
 
-    _heli limitSpeed 20;
-    private _alignTimer = 0;
-    waitUntil {
-        sleep 0.1;
-        _alignTimer = _alignTimer + 0.1;
+    // 1. ARRIVÉE ET PRISE DE CONTRÔLE POUR VOL STATIONNAIRE DE PRÉCISION
+    _pilot disableAI "MOVE";
+    _pilot disableAI "PATH";
+    doStop _heli;
+    _heli limitSpeed 0;
 
-        private _d2d = _heli distance2D _cargo;
-        private _dirTo = _heli getDir _cargo;
-        private _vel = velocity _heli;
+    private _heliDir = getDir _heli;
+    private _fwd = [sin _heliDir, cos _heliDir, 0];
 
-        if (_d2d > 2.0) then {
-            private _force = (_d2d * 0.2) min 4;
-            _heli setVelocity [
-                (_vel select 0) * 0.88 + (sin _dirTo * _force),
-                (_vel select 1) * 0.88 + (cos _dirTo * _force),
-                ((_cargoASL + _transitAlt) - (getPosASL _heli select 2)) * 0.6
-            ];
-            _heli doMove (getPos _cargo);
-        } else {
-            doStop _heli;
-            _heli setVelocity [
-                (_vel select 0) * 0.75,
-                (_vel select 1) * 0.75,
-                ((_cargoASL + _transitAlt) - (getPosASL _heli select 2)) * 0.5
-            ];
-        };
+    private _startHPos = getPosASL _heli;
+    private _startZ = _startHPos select 2;
+    private _alignDuration = 3.0;
+    private _alignStart = time;
 
-        (_d2d < 2.5 && abs ((getPosASL _heli select 2) - (_cargoASL + _transitAlt)) < 2.5) || _alignTimer > 20 || !alive _heli || !alive _cargo
+    while { (time - _alignStart) < _alignDuration && alive _heli && alive _cargo } do {
+        private _t = (time - _alignStart) / _alignDuration;
+        private _smoothT = _t * _t * (3 - 2 * _t);
+        private _curX = (_startHPos select 0) + ((_cargoX - (_startHPos select 0)) * _smoothT);
+        private _curY = (_startHPos select 1) + ((_cargoY - (_startHPos select 1)) * _smoothT);
+
+        _heli setPosASL [_curX, _curY, _startZ];
+        _heli setVelocity [0, 0, 0];
+        _heli setVectorDirAndUp [_fwd, [0, 0, 1]];
+        sleep 0.02;
     };
 
     if (!alive _heli || !alive _cargo) exitWith {
@@ -300,28 +298,25 @@ LL_fnc_taskD_chemical_heliExtract = {
         deleteGroup _grp;
     };
 
-    private _currentTgtAlt = _cargoASL + _transitAlt;
-    private _finalTgtAlt = _cargoASL + _hoverHeight;
-    private _descendTimer = 0;
+    // 2. DESCENTE VERTICALE DOUCE ET PARFAITEMENT CENTRÉE VERS LE STATIONNAIRE BAS (8.0m ASL)
+    private _targetHoverZ = _cargoASL + 8.0;
+    private _descentDistance = _startZ - _targetHoverZ;
+    private _descendDuration = (_descentDistance / 3.0) max 6 min 15;
+    private _descendStart = time;
 
-    while { _currentTgtAlt > _finalTgtAlt && _descendTimer < 35 && alive _heli && alive _cargo } do {
-        sleep 0.15;
-        _descendTimer = _descendTimer + 0.15;
+    while { (time - _descendStart) < _descendDuration && alive _heli && alive _cargo } do {
+        private _t = (time - _descendStart) / _descendDuration;
+        private _smoothT = _t * _t * (3 - 2 * _t);
+        private _curZ = _startZ - (_descentDistance * _smoothT);
 
-        _currentTgtAlt = (_currentTgtAlt - 0.25) max _finalTgtAlt;
-        _heli flyInHeightASL [_currentTgtAlt, _currentTgtAlt, _currentTgtAlt];
-
-        private _d2d = _heli distance2D _cargo;
-        private _dirTo = _heli getDir _cargo;
-        private _vel = velocity _heli;
-        private _force = (_d2d * 0.25) min 3;
-
-        _heli setVelocity [
-            (_vel select 0) * 0.85 + (sin _dirTo * _force),
-            (_vel select 1) * 0.85 + (cos _dirTo * _force),
-            ((_currentTgtAlt - (getPosASL _heli select 2)) * 0.7) min 0.5 max -2.0
-        ];
+        _heli setPosASL [_cargoX, _cargoY, _curZ];
+        _heli setVelocity [0, 0, -2.0];
+        _heli setVectorDirAndUp [_fwd, [0, 0, 1]];
+        sleep 0.02;
     };
+    _heli setPosASL [_cargoX, _cargoY, _targetHoverZ];
+    _heli setVelocity [0, 0, 0];
+    _heli setVectorDirAndUp [_fwd, [0, 0, 1]];
 
     if (!alive _heli || !alive _cargo) exitWith {
         { deleteVehicle _x; } forEach crew _heli;
@@ -329,81 +324,44 @@ LL_fnc_taskD_chemical_heliExtract = {
         deleteGroup _grp;
     };
 
-    private _hoverStabilizeTimer = 0;
-    waitUntil {
-        sleep 0.1;
-        _hoverStabilizeTimer = _hoverStabilizeTimer + 0.1;
-
-        private _d2d = _heli distance2D _cargo;
-        private _dirTo = _heli getDir _cargo;
-        private _vel = velocity _heli;
-        private _force = (_d2d * 0.2) min 2;
-
-        _heli setVelocity [
-            (_vel select 0) * 0.8 + (sin _dirTo * _force),
-            (_vel select 1) * 0.8 + (cos _dirTo * _force),
-            ((_finalTgtAlt - (getPosASL _heli select 2)) * 0.6) min 0.5 max -0.5
-        ];
-
-        (_d2d < 2.0 && abs ((getPosASL _heli select 2) - _finalTgtAlt) < 1.2) || _hoverStabilizeTimer > 5 || !alive _heli || !alive _cargo
-    };
-
-    if (!alive _heli || !alive _cargo) exitWith {
-        { deleteVehicle _x; } forEach crew _heli;
-        deleteVehicle _heli;
-        deleteGroup _grp;
-    };
-
+    // 3. FIXATION DES SÉCURITÉS ET DÉPLOIEMENT DES CÂBLES AU SOL
     _cargo allowDamage false;
     _cargo enableRopeAttach true;
     _heli enableRopeAttach true;
+    _cargo disableCollisionWith _heli;
+    _heli disableCollisionWith _cargo;
 
+    // Aligner le camion dans le même axe que l'hélicoptère (évite tout croisement des câbles)
+    _cargo setVectorDirAndUp [_fwd, [0, 0, 1]];
     private _originalMass = getMass _cargo;
-    _cargo setMass 10;
+    _cargo setMass 50; // Masse allégée pour neutraliser tout couple PhysX déstabilisant sur l'hélicoptère
 
     private _attachedWithRopes = false;
     private _ropes = [];
 
-    _heli setSlingLoad _cargo;
+    // Connexion séquentielle des 4 câbles PhysX au camion au sol
+    private _ropeLen = 7.0;
+    _ropes pushBack (ropeCreate [_heli, [0, 2.0, -1.2], _cargo, [-1.2, 2.5, 0.4], _ropeLen]);
+    _ropes pushBack (ropeCreate [_heli, [0, 2.0, -1.2], _cargo, [1.2, 2.5, 0.4], _ropeLen]);
+    sleep 0.5;
+    _ropes pushBack (ropeCreate [_heli, [0, -2.0, -1.2], _cargo, [-1.2, -2.5, 0.4], _ropeLen]);
+    _ropes pushBack (ropeCreate [_heli, [0, -2.0, -1.2], _cargo, [1.2, -2.5, 0.4], _ropeLen]);
 
-    private _slingTimer = 0;
-    waitUntil {
-        sleep 0.1;
-        _slingTimer = _slingTimer + 0.1;
-        !isNull (getSlingLoad _heli) || _slingTimer > 2.0 || !alive _heli || !alive _cargo
-    };
-
-    if (!alive _heli || !alive _cargo) exitWith {
-        _cargo setMass _originalMass;
-        { deleteVehicle _x; } forEach crew _heli;
-        deleteVehicle _heli;
-        deleteGroup _grp;
-    };
-
-    if (isNull (getSlingLoad _heli)) then {
-        _attachedWithRopes = true;
-        _cargo setMass 1;
-
-        _cargo attachTo [_heli, [0, 0, -5]];
-        _cargo setVectorUp [0, 0, 1];
-
-        private _r1 = ropeCreate [_heli, [-1.5, 0, -1], _cargo, [-1.2, 2.5, 1.2], 5];
-        private _r2 = ropeCreate [_heli, [1.5, 0, -1], _cargo, [1.2, 2.5, 1.2], 5];
-        private _r3 = ropeCreate [_heli, [-1.5, 0, -1], _cargo, [-1.2, -2.5, 1.2], 5];
-        private _r4 = ropeCreate [_heli, [1.5, 0, -1], _cargo, [1.2, -2.5, 1.2], 5];
-        _ropes = [_r1, _r2, _r3, _r4];
-    };
+    // Pause d'immersion : les 4 câbles relient le Chinook au camion au sol
+    sleep 2.5;
 
     _cargo removeAllEventHandlers "Killed";
     _cargo removeAllEventHandlers "HandleDamage";
 
-    [_heli, _cargo, _dropPos, _grp] spawn {
-        params ["_heli", "_cargo", "_dropPos", "_grp"];
+    // Sécurité globale (timeout 120s)
+    [_heli, _cargo, _dropPos, _grp, _ropes] spawn {
+        params ["_heli", "_cargo", "_dropPos", "_grp", "_ropes"];
         sleep 120;
         if (!isNull _heli && { alive _heli }) then {
             if (!isNull _cargo) then {
                 detach _cargo;
                 if (!isNull (getSlingLoad _heli)) then { _heli setSlingLoad objNull; };
+                { if (!isNull _x) then { ropeDestroy _x; }; } forEach _ropes;
                 deleteVehicle _cargo;
             };
             { deleteVehicle _x; } forEach (crew _heli);
@@ -412,26 +370,29 @@ LL_fnc_taskD_chemical_heliExtract = {
         };
     };
 
-    private _climbTgtAlt = _cargoASL + _hoverHeight;
-    private _climbMaxAlt = _cargoASL + _transitAlt;
-    private _climbTimer = 0;
+    // 4. MONTÉE ET LEVAGE PHYSIQUE DU CAMION DANS LES AIRS (ASSIETTE STRICTEMENT VERROUILLÉE)
+    private _climbDistance = 45.0;
+    private _climbDuration = (_climbDistance / 3.0) max 8 min 16;
+    private _climbStart = time;
+    private _truckStartASL = getPosASL _cargo;
+    private _truckBaseZ = _truckStartASL select 2;
 
-    _heli limitSpeed 25;
+    while { (time - _climbStart) < _climbDuration && alive _heli && alive _cargo } do {
+        private _t = (time - _climbStart) / _climbDuration;
+        private _smoothT = _t * _t * (3 - 2 * _t);
+        private _curHeliZ = _targetHoverZ + (_climbDistance * _smoothT);
 
-    while { _climbTgtAlt < _climbMaxAlt && _climbTimer < 30 && alive _heli && alive _cargo } do {
-        sleep 0.15;
-        _climbTimer = _climbTimer + 0.15;
-        _climbTgtAlt = (_climbTgtAlt + 0.35) min _climbMaxAlt;
-        _heli flyInHeightASL [_climbTgtAlt, _climbTgtAlt, _climbTgtAlt];
-        private _d2d = _heli distance2D _cargo;
-        private _dirTo = _heli getDir _cargo;
-        private _vel = velocity _heli;
-        private _force = (_d2d * 0.2) min 2.5;
-        _heli setVelocity [
-            (_vel select 0) * 0.85 + (sin _dirTo * _force),
-            (_vel select 1) * 0.85 + (cos _dirTo * _force),
-            ((_climbTgtAlt - (getPosASL _heli select 2)) * 0.8) min 2.5 max 0
-        ];
+        _heli setPosASL [_cargoX, _cargoY, _curHeliZ];
+        _heli setVelocity [0, 0, 2.5];
+        _heli setVectorDirAndUp [_fwd, [0, 0, 1]]; // Maintien rigide de l'assiette horizontale
+
+        // Le camion est hissé à la hauteur des élingues tendues (différence = 8.0m)
+        private _curTruckZ = (_curHeliZ - 8.0) max _truckBaseZ;
+        _cargo setPosASL [_cargoX, _cargoY, _curTruckZ];
+        _cargo setVelocity [0, 0, 2.5];
+        _cargo setVectorDirAndUp [_fwd, [0, 0, 1]];
+
+        sleep 0.02;
     };
 
     if (!alive _heli || !alive _cargo) exitWith {
@@ -440,6 +401,20 @@ LL_fnc_taskD_chemical_heliExtract = {
         deleteGroup _grp;
     };
 
+    // 5. TRANSIT SÉCURISÉ UNE FOIS EN VOL DE CROISIÈRE
+    { if (!isNull _x) then { ropeDestroy _x; }; } forEach _ropes;
+    _ropes = [];
+
+    _cargo attachTo [_heli, [0, 0, -8.0]];
+    _cargo setVectorDirAndUp [[0, 1, 0], [0, 0, 1]];
+    _attachedWithRopes = true;
+
+    // Impulsion initiale vers l'avant pour une reprise de vol fluide
+    _heli setVelocity [(_fwd select 0) * 15, (_fwd select 1) * 15, 0];
+
+    // Réactivation des commandes de vol du pilote IA
+    _pilot enableAI "MOVE";
+    _pilot enableAI "PATH";
     _heli flyInHeight 75;
     _heli limitSpeed 70;
 
@@ -527,16 +502,23 @@ LL_fnc_taskD_chemical_heliExtract = {
     if (count _remaining == 0) then {
         ["task_chemical", "SUCCEEDED", true] call BIS_fnc_taskSetState;
         missionNamespace setVariable ["LL_g_taskInProgress", false];
+    } else {
+        private _nextTruck = _remaining select 0;
+        private _nextSub = _nextTruck getVariable ["LL_TaskDChemical_SubTask", ""];
+        if (_nextSub != "") then {
+            [_nextSub, true] call BIS_fnc_taskSetCurrent;
+        };
     };
 
     waitUntil { sleep 1; (_heli distance2D _dropPos < 300) || !alive _heli };
 
     if (_attachedWithRopes) then {
         detach _cargo;
-        { ropeDestroy _x; } forEach _ropes;
-    } else {
+    };
+    if (!isNull (getSlingLoad _heli)) then {
         _heli setSlingLoad objNull;
     };
+    { if (!isNull _x) then { ropeDestroy _x; }; } forEach _ropes;
 
     sleep 2;
     deleteVehicle _cargo;
@@ -804,15 +786,17 @@ LL_fnc_taskD_chemical_heliExtract = {
 missionNamespace setVariable ["LL_TaskDChemical_RemainingTrucks", _allTrucks];
 missionNamespace setVariable ["LL_TaskDChemical_AllUnits", _allUnits];
 
+private _mainDest = if (count _allTrucks > 0) then { [_allTrucks select 0, true] } else { _centerPos };
+
 [
-    true,
+    group player,
     ["task_chemical"],
     [
         localize "STR_LL_Task_04_Desc",
         localize "STR_LL_Task_04_Title",
         ""
     ],
-    objNull,
+    _mainDest,
     "AUTOASSIGNED",
     5,
     true,
@@ -824,9 +808,11 @@ missionNamespace setVariable ["LL_TaskDChemical_AllUnits", _allUnits];
     private _truck = _x;
     private _idx = _forEachIndex + 1;
     private _subTaskID = format ["task_chemical_%1", _idx];
+    private _subState = if (_idx == 1) then { "AUTOASSIGNED" } else { "CREATED" };
+    private _subPrio = if (_idx == 1) then { 4 } else { 3 };
     
     [
-        true,
+        group player,
         [_subTaskID, "task_chemical"],
         [
             format ["%1 (%2/%3)", localize "STR_LL_Task_04_MarkerMain", _idx, count _allTrucks],
@@ -834,14 +820,18 @@ missionNamespace setVariable ["LL_TaskDChemical_AllUnits", _allUnits];
             ""
         ],
         [_truck, true],
-        "CREATED",
-        -1,
-        false,
+        _subState,
+        _subPrio,
+        true,
         "danger",
         false
     ] call BIS_fnc_taskCreate;
     
     _truck setVariable ["LL_TaskDChemical_SubTask", _subTaskID];
 } forEach _allTrucks;
+
+if (count _allTrucks > 0) then {
+    ["task_chemical_1", true] call BIS_fnc_taskSetCurrent;
+};
 
 { _x createDiaryRecord ["diary", [localize "STR_LL_Diary_Task04_Title", localize "STR_LL_Diary_Task04_Text"]]; } forEach (units group player);

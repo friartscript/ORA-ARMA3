@@ -402,6 +402,23 @@ class CfgSounds
     {
         name = "ezan";
         sound[] = {"Music\ezan.ogg", db+12, 1.0, 2000};
+    };
+    class Sound_Rubab_01
+    {
+        name = "Sound_Rubab_01";
+        sound[] = {"Music\Rubab_01.ogg", db+10, 1.0};
+        titles[] = {0, ""};
+    };
+    class Sound_Rubab_02
+    {
+        name = "Sound_Rubab_02";
+        sound[] = {"Music\Rubab_02.ogg", db+10, 1.0};
+        titles[] = {0, ""};
+    };
+    class Sound_Rubab_Full
+    {
+        name = "Sound_Rubab_Full";
+        sound[] = {"Music\Rubab_Full.ogg", db+10, 1.0};
         titles[] = {0, ""};
     };
 };

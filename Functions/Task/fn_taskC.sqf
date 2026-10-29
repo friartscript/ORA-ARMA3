@@ -4,7 +4,7 @@ if (missionNamespace getVariable ["LL_g_taskC_active", false]) exitWith {};
 missionNamespace setVariable ["LL_g_taskC_active", true, true];
 
 [
-    true,
+    group player,
     "task_mandatory_ext",
     [
         localize "STR_LL_Task_Man3_Desc",

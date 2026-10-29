@@ -142,10 +142,10 @@ _cam camCommit 0;
 waitUntil { camCommitted _cam };
 
 if ((getAudioOptionVolumes select 1) > 0.05) then {
-    playMusic "Music_Intro";
+    playMusic "Music_Rubab_01";
     3 fadeMusic 1;
 } else {
-    playSound "Sound_Music_Intro";
+    playSound "Sound_Rubab_01";
 };
 3 fadeSound 1;
 cutText ["", "BLACK IN", 3.0];

@@ -13,7 +13,7 @@ private _radius = (markerSize _locMarker) select 0;
 if (_radius == 0) then { _radius = 350; };
 
 [
-    true,
+    group player,
     "task_mandatory_civ",
     [
         localize "STR_LL_Task_Man2_Desc",

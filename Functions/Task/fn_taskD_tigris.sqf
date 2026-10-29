@@ -118,14 +118,14 @@ missionNamespace setVariable ["LL_TaskDTigris_Finished", false];
 private _subVehicles = "task_tigris_vehicles";
 
 [
-    true,
+    group player,
     ["task_tigris"],
     [
         localize "STR_LL_Task_08_Desc",
         localize "STR_LL_Task_08_Title",
         ""
     ],
-    objNull,
+    [_dca, true],
     "AUTOASSIGNED",
     5,
     true,
@@ -134,7 +134,7 @@ private _subVehicles = "task_tigris_vehicles";
 ] call BIS_fnc_taskCreate;
 
 [
-    true,
+    group player,
     [_subVehicles, "task_tigris"],
     [
         localize "STR_LL_Task_08_MarkerVehicles",
@@ -142,12 +142,14 @@ private _subVehicles = "task_tigris_vehicles";
         ""
     ],
     [_dca, true],
-    "CREATED",
-    -1,
-    false,
+    "AUTOASSIGNED",
+    4,
+    true,
     "destroy",
     false
 ] call BIS_fnc_taskCreate;
+
+[_subVehicles, true] call BIS_fnc_taskSetCurrent;
 
 { _x createDiaryRecord ["diary", [localize "STR_LL_Diary_Task08_Title", localize "STR_LL_Diary_Task08_Text"]]; } forEach (units group player);
 

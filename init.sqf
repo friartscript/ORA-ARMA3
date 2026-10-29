@@ -73,5 +73,30 @@ for "_i" from 0 to 5 do {
         [] call LL_fnc_initSupport;
         [] call LL_fnc_initBriefing;
         [] call LL_fnc_initContext;
+
+        [] spawn {
+            sleep 0.5;
+            private _tasks = [
+                "task_chemical_1", "task_chemical_2", "task_chemical",
+                "task_d_transmission_radio_0", "task_d_transmission_radio_1", "task_d_transmission",
+                "task_d_documents",
+                "task_d_hvt",
+                "task_d_captive",
+                "task_tigris_vehicles", "task_tigris",
+                "task_bonus_move",
+                "task_mandatory_move",
+                "task_mandatory_civ",
+                "task_mandatory_ext",
+                "task_extraction"
+            ];
+            private _cur = "";
+            {
+                if ([_x] call BIS_fnc_taskExists) then {
+                    private _st = [_x] call BIS_fnc_taskState;
+                    if (_st in ["CREATED", "ASSIGNED", "AUTOASSIGNED"]) exitWith { _cur = _x; };
+                };
+            } forEach _tasks;
+            if (_cur != "") then { [_cur, true] call BIS_fnc_taskSetCurrent; };
+        };
     };
 };

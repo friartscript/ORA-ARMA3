@@ -306,9 +306,9 @@ sleep 2;
 
 if ((getAudioOptionVolumes select 1) > 0.05) then {
     0 fadeMusic 1;
-    playMusic "Music_Intro";
+    playMusic "Music_Rubab_02";
 } else {
-    playSound "Sound_Music_Intro";
+    playSound "Sound_Rubab_02";
 };
 
 [_heli, ["doorLB", 0]] remoteExec ["animateDoor", 0, _heli];

@@ -30,6 +30,35 @@ if (count _livingUnits > 0) then {
         titleCut ["", "BLACK IN", 2];
         [_targetAI] call LL_fnc_addRoeActions;
         [] call LL_fnc_initSupport;
+
+        // Restauration et synchronisation immédiate des marqueurs de tâches sur la nouvelle unité
+        private _allCandidateTasks = [
+            "task_chemical_1", "task_chemical_2", "task_chemical",
+            "task_d_transmission_radio_0", "task_d_transmission_radio_1", "task_d_transmission",
+            "task_d_documents",
+            "task_d_hvt",
+            "task_d_captive",
+            "task_tigris_vehicles", "task_tigris",
+            "task_bonus_move",
+            "task_mandatory_move",
+            "task_mandatory_civ",
+            "task_mandatory_ext",
+            "task_extraction"
+        ];
+        
+        private _activeTask = "";
+        {
+            if ([_x] call BIS_fnc_taskExists) then {
+                private _st = [_x] call BIS_fnc_taskState;
+                if (_st in ["CREATED", "ASSIGNED", "AUTOASSIGNED"]) exitWith {
+                    _activeTask = _x;
+                };
+            };
+        } forEach _allCandidateTasks;
+        
+        if (_activeTask != "") then {
+            [_activeTask, true] call BIS_fnc_taskSetCurrent;
+        };
     };
 } else {
     [_deadUnit] spawn {

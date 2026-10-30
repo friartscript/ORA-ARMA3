@@ -132,13 +132,13 @@ private _fnc_processUnit = {
     private _selectedSpeaker = "";
     switch (_faceType) do {
         case "White": { 
-            _selectedSpeaker = "Male01FRE"; 
+            _selectedSpeaker = selectRandom ["Male01ENG", "Male02ENG", "Male03ENG", "Male04ENG", "Male05ENG"]; 
         };
         case "Black": { 
-            _selectedSpeaker = "Male02FRE"; 
+            _selectedSpeaker = selectRandom ["Male01ENGB", "Male02ENGB", "Male03ENGB"]; 
         };
         default { 
-            _selectedSpeaker = "Male03FRE"; 
+            _selectedSpeaker = selectRandom ["Male01ENG", "Male02ENG", "Male03ENG"]; 
         };
     };
     

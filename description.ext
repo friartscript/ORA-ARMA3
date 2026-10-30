@@ -4,7 +4,7 @@ onLoadMission = "Takistan — RACS Foreign Legion Tactical Operations";
 author = "Friart Script";
 loadScreen = "loadScreen.jpg";
 overviewPicture = "overviewPicture.jpg";
-overviewText = "Takistan — RACS Foreign Legion Tactical Operations. Choisissez vos missions et déployez votre escouade dynamiquement.";
+overviewText = "$STR_LL_OverviewText";
 disabledAI = 0;
 
 #include "Dialogs\main_menu.hpp"
@@ -181,41 +181,6 @@ class CfgMusic
         titles[] = {0, ""};
     };
 
-    class Music_Intro
-    {
-        name = "Shadow of the Valley 01";
-        sound[] = {"Music\Shadow_of_the_Valley_01.ogg", db+5, 1.0};
-        titles[] = {0, ""};
-    };
-
-    class Music_Track_01
-    {
-        name = "Shadow of the Valley 01";
-        sound[] = {"Music\Shadow_of_the_Valley_01.ogg", db+5, 1.0};
-        titles[] = {0, ""};
-    };
-
-    class Music_Track_02
-    {
-        name = "Shadow of the Valley 02";
-        sound[] = {"Music\Shadow_of_the_Valley_02.ogg", db+5, 1.0};
-        titles[] = {0, ""};
-    };
-
-    class Music_Track_03
-    {
-        name = "Shadow of the Valley 03";
-        sound[] = {"Music\Shadow_of_the_Valley_03.ogg", db+5, 1.0};
-        titles[] = {0, ""};
-    };
-
-    class Music_Legion_01
-    {
-        name = "Legion 01";
-        sound[] = {"Music\legion_01.ogg", db+0, 1.0};
-        titles[] = {0, ""};
-    };
-
     class Music_Rubab_01
     {
         name = "Rubab 01";
@@ -233,15 +198,6 @@ class CfgMusic
     };
 
     class Rubab_02: Music_Rubab_02 {};
-
-    class Music_Rubab_Full
-    {
-        name = "Rubab Full";
-        sound[] = {"Music\Rubab_Full.ogg", db+10, 1.0};
-        titles[] = {0, ""};
-    };
-
-    class Rubab_Full: Music_Rubab_Full {};
 };
 
 class CfgUnitInsignia

@@ -15,11 +15,7 @@ if (_playAudio && { isClass (missionConfigFile >> "CfgSounds" >> _stringKey) || 
 
 private _localizedText = localize _stringKey;
 if (_localizedText isEqualTo "") then {
-    if (_stringKey isEqualTo "STR_Drone_Jammed") then {
-        _localizedText = "Brouillage radio détecté. Impossible de contacter le drone.";
-    } else {
-        _localizedText = _stringKey;
-    };
+    _localizedText = _stringKey;
 };
 
 if (count _formatArgs > 0) then {
@@ -29,12 +25,12 @@ if (count _formatArgs > 0) then {
 // Détection automatique de l'émetteur si non fourni
 if (_speaker isEqualTo "") then {
     if (_stringKey find "STR_Drone_" == 0) then {
-        _speaker = "Opérateur Drone";
+        _speaker = localize "STR_LL_Radio_Speaker_Drone";
     } else {
-        if (_stringKey find "STR_LL_Heli_" == 0) then {
-            _speaker = "Appui Aérien";
+        if (_stringKey find "STR_LL_Heli_" == 0 || _stringKey find "STR_TAG_Msg_" == 0) then {
+            _speaker = localize "STR_LL_Radio_Speaker_AirSupport";
         } else {
-            _speaker = "QG";
+            _speaker = localize "STR_LL_Radio_Speaker_HQ";
         };
     };
 };

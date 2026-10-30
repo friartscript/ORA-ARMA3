@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Keys>
+    <Key ID="STR_LL_Task_08_Flyover_ETA">
+        <Original>(Cargo flyover ETA %1 min)</Original>
+        <English>(Cargo flyover ETA %1 min)</English>
+        <French>(Survol cargo ETA %1 min)</French>
+        <Spanish>(Sobrevuelo de carga ETA %1 min)</Spanish>
+        <German>(Frachtflugzeug-Überflug ETA %1 Min.)</German>
+        <Italian>(Sorvolo cargo ETA %1 min)</Italian>
+        <Polish>(Przelot transportowca ETA %1 min)</Polish>
+        <Portuguese>(Sobrevôo de carga ETA %1 min)</Portuguese>
+        <Russian>(Пролет транспортника расчетное время %1 мин)</Russian>
+        <Czech>(Přelet nákladního letadla ETA %1 min)</Czech>
+        <Korean>(수송기 공역 진입 예상 시간 %1분)</Korean>
+        <Japanese>(輸送機上空通過 予定時間 %1分)</Japanese>
+        <Chinese>(運輸機預計 %1 分鐘後飛越)</Chinese>
+        <Chinesesimp>(运输机预计 %1 分钟后飞越)</Chinesesimp>
+        <Turkish>(Kargo uçuşu tahmini varış %1 dk)</Turkish>
+    </Key>
+</Keys>

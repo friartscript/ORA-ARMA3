@@ -392,16 +392,11 @@ class CfgSounds
         sound[] = {"A3\Sounds_F\sfx\beep_target.wss", db+8, 1.0};
         titles[] = {0, ""};
     };
-    class Sound_Music_Intro
-    {
-        name = "Sound_Music_Intro";
-        sound[] = {"Music\Shadow_of_the_Valley_01.ogg", db+0, 1.0};
-        titles[] = {0, ""};
-    };
     class ezan
     {
         name = "ezan";
         sound[] = {"Music\ezan.ogg", db+12, 1.0, 2000};
+        titles[] = {0, ""};
     };
     class Sound_Rubab_01
     {
@@ -413,12 +408,6 @@ class CfgSounds
     {
         name = "Sound_Rubab_02";
         sound[] = {"Music\Rubab_02.ogg", db+10, 1.0};
-        titles[] = {0, ""};
-    };
-    class Sound_Rubab_Full
-    {
-        name = "Sound_Rubab_Full";
-        sound[] = {"Music\Rubab_Full.ogg", db+10, 1.0};
         titles[] = {0, ""};
     };
 };

@@ -557,7 +557,7 @@ class RscMapControl
     };
     class Ruin
     {
-        icon = "\A3\ui_f\data\map\mapcontrol\ruins_ca.paa";
+        icon = "\A3\ui_f\data\map\mapcontrol\ruin_ca.paa";
         color[] = {1, 1, 1, 1};
         size = 16;
         importance = 1;
@@ -566,7 +566,7 @@ class RscMapControl
     };
     class Ruins
     {
-        icon = "\A3\ui_f\data\map\mapcontrol\ruins_ca.paa";
+        icon = "\A3\ui_f\data\map\mapcontrol\ruin_ca.paa";
         color[] = {1, 1, 1, 1};
         size = 16;
         importance = 1;
@@ -575,7 +575,7 @@ class RscMapControl
     };
     class SmallTree
     {
-        icon = "\A3\ui_f\data\map\mapcontrol\something_ca.paa";
+        icon = "\A3\ui_f\data\map\mapcontrol\bush_ca.paa";
         color[] = {0.45, 0.64, 0.33, 0.4};
         size = 12;
         importance = 0.6;
@@ -593,7 +593,7 @@ class RscMapControl
     };
     class Tree
     {
-        icon = "\A3\ui_f\data\map\mapcontrol\something_ca.paa";
+        icon = "\A3\ui_f\data\map\mapcontrol\bush_ca.paa";
         color[] = {0.45, 0.64, 0.33, 0.4};
         size = 12;
         importance = 0.9;
@@ -611,7 +611,7 @@ class RscMapControl
     };
     class Tourism
     {
-        icon = "\A3\ui_f\data\map\mapcontrol\tourist_ca.paa";
+        icon = "\A3\ui_f\data\map\mapcontrol\tourism_ca.paa";
         color[] = {1, 1, 1, 1};
         size = 16;
         importance = 1;
@@ -620,7 +620,7 @@ class RscMapControl
     };
     class Tourist
     {
-        icon = "\A3\ui_f\data\map\mapcontrol\tourist_ca.paa";
+        icon = "\A3\ui_f\data\map\mapcontrol\tourism_ca.paa";
         color[] = {1, 1, 1, 1};
         size = 16;
         importance = 1;
@@ -936,13 +936,23 @@ class Refour_Main_Menu_Dialog
             colorText[] = {0.95, 0.75, 0.2, 1};
         };
 
+        class Txt_ExtractionAlert: RscStructuredText {
+            idc = 7130;
+            text = "$STR_MAIN_MENU_EXTRACTION_ALERT";
+            x = safezoneX + (0.025 * safezoneW);
+            y = safezoneY + (0.49 * safezoneH);
+            w = 0.29 * safezoneW;
+            h = 0.075 * safezoneH;
+            colorBackground[] = {0.35, 0.05, 0.05, 0.75};
+        };
+
         class Txt_Rules: RscStructuredText {
             idc = -1;
             text = "$STR_MAIN_MENU_RULES";
             x = safezoneX + (0.025 * safezoneW);
-            y = safezoneY + (0.50 * safezoneH);
+            y = safezoneY + (0.575 * safezoneH);
             w = 0.29 * safezoneW;
-            h = 0.25 * safezoneH;
+            h = 0.20 * safezoneH;
             colorBackground[] = {0,0,0,0};
         };
 

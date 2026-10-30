@@ -2312,6 +2312,23 @@ Ağ doluysa istekleriniz reddedilebilir veya kesintiye uğrayabilir.&lt;br/&gt;&
             <Chinesesimp>叛军威胁 (罕见的平民伪装伏击)</Chinesesimp>
             <Turkish>İsyancı Tehdidi (Nadir sivil pusuları)</Turkish>
         </Key>
+        <Key ID="STR_MAIN_MENU_EXTRACTION_ALERT">
+            <Original>&lt;t color='#FF3333' size='0.85' font='PuristaBold'&gt;⚠️ EXTRACTION NOTICE:&lt;br/&gt;Extraction is strictly MANUAL via radio Support (0-8-3), NEVER automatic! You can call it at any time.&lt;/t&gt;</Original>
+            <English>&lt;t color='#FF3333' size='0.85' font='PuristaBold'&gt;⚠️ EXTRACTION NOTICE:&lt;br/&gt;Extraction is strictly MANUAL via radio Support (0-8-3), NEVER automatic! You can call it at any time.&lt;/t&gt;</English>
+            <French>&lt;t color='#FF3333' size='0.85' font='PuristaBold'&gt;⚠️ AVIS D'EXTRACTION :&lt;br/&gt;L'extraction est strictement MANUELLE via le menu Support (0-8-3), JAMAIS automatique ! Vous pouvez l'appeler à tout moment.&lt;/t&gt;</French>
+            <Spanish>&lt;t color='#FF3333' size='0.85' font='PuristaBold'&gt;⚠️ AVISO DE EXTRACCIÓN:&lt;br/&gt;¡La extracción es estrictamente MANUAL a través del menú Soporte (0-8-3), NUNCA automática! Puede solicitarla en cualquier momento.&lt;/t&gt;</Spanish>
+            <German>&lt;t color='#FF3333' size='0.85' font='PuristaBold'&gt;⚠️ EVAKUIERUNGSHINWEIS:&lt;br/&gt;Die Evakuierung erfolgt ausschließlich MANUELL über das Funkmenü Support (0-8-3), NIEMALS automatisch! Sie kann jederzeit angefordert werden.&lt;/t&gt;</German>
+            <Italian>&lt;t color='#FF3333' size='0.85' font='PuristaBold'&gt;⚠️ AVVISO DI ESTRAZIONE:&lt;br/&gt;L'estrazione è rigorosamente MANUALE tramite la radio Supporto (0-8-3), MAI automatica! Puoi richiederla in qualsiasi momento.&lt;/t&gt;</Italian>
+            <Polish>&lt;t color='#FF3333' size='0.85' font='PuristaBold'&gt;⚠️ UWAGA DOTYCZĄCA EWAKUACJI:&lt;br/&gt;Ewakuacja jest wyłącznie RĘCZNA przez menu Wsparcia (0-8-3), NIGDY automatyczna! Możesz ją wezwać w dowolnym momencie.&lt;/t&gt;</Polish>
+            <Portuguese>&lt;t color='#FF3333' size='0.85' font='PuristaBold'&gt;⚠️ AVISO DE EXTRAÇÃO:&lt;br/&gt;A extração é estritamente MANUAL através do menu Suporte (0-8-3), NUNCA automática! Pode solicitá-la a qualquer momento.&lt;/t&gt;</Portuguese>
+            <Russian>&lt;t color='#FF3333' size='0.85' font='PuristaBold'&gt;⚠️ ВАЖНОЕ ПРЕДУПРЕЖДЕНИЕ:&lt;br/&gt;Эвакуация вызывается исключительно ВРУЧНУЮ через меню Поддержки (0-8-3), а НЕ автоматически! Вы можете запросить её в любой момент.&lt;/t&gt;</Russian>
+            <Czech>&lt;t color='#FF3333' size='0.85' font='PuristaBold'&gt;⚠️ UPOZORNĚNÍ K EVAKUACI:&lt;br/&gt;Evakuace je striktně MANUÁLNÍ přes menu Podpory (0-8-3), NIKDY automatická! Můžete ji povolat kdykoliv.&lt;/t&gt;</Czech>
+            <Turkish>&lt;t color='#FF3333' size='0.85' font='PuristaBold'&gt;⚠️ TAHLİYE UYARISI:&lt;br/&gt;Tahliye kesinlikle Destek menüsünden (0-8-3) MANUEL olarak çağrılır, ASLA otomatik gerçekleşmez! İstediğiniz an tahliye çağırabilirsiniz.&lt;/t&gt;</Turkish>
+            <Japanese>&lt;t color='#FF3333' size='0.85' font='PuristaBold'&gt;⚠️ 脱出に関する重要警告:&lt;br/&gt;脱出はサポートメニュー(0-8-3)からの完全手動要請であり、自動では絶対に発生しません！いつでも好きなタイミングで要請可能です。&lt;/t&gt;</Japanese>
+            <Korean>&lt;t color='#FF3333' size='0.85' font='PuristaBold'&gt;⚠️ 탈출 관련 중요 안내:&lt;br/&gt;탈출은 지원 메뉴(0-8-3)를 통해 100% 수동으로 요청해야 하며, 자동으로 진행되지 않습니다! 언제든지 원할 때 요청할 수 있습니다.&lt;/t&gt;</Korean>
+            <Chinese>&lt;t color='#FF3333' size='0.85' font='PuristaBold'&gt;⚠️ 撤離重要提示：&lt;br/&gt;撤離行動必須由玩家透過支援選單 (0-8-3) 手動呼叫，絕非自動觸發！您可以在行動中隨時呼叫撤離。&lt;/t&gt;</Chinese>
+            <Chinesesimp>&lt;t color='#FF3333' size='0.85' font='PuristaBold'&gt;⚠️ 撤离重要提示：&lt;br/&gt;撤离行动必须由玩家通过支援菜单 (0-8-3) 手动呼叫，绝非自动触发！您可以在行动中随时呼叫撤离。&lt;/t&gt;</Chinesesimp>
+        </Key>
     </Package>
     <Package name="Task">
         <Key ID="STR_LL_Task_Extraction_Title">
@@ -3320,6 +3337,177 @@ Sadece hassas atış. Hedef araç yakınında patlayıcı yasaktır.</Turkish>
             <Italian>Ti è stata assegnata una nuova missione. Leggi il briefing del compito.</Italian>
             <Polish>Otrzymałeś nową misję. Przeczytaj odprawę zadania.</Polish>
         </Key>
+        <Key ID="STR_LL_Task_01_Action">
+            <Original>Search body (Documents)</Original>
+            <English>Search body (Documents)</English>
+            <French>Fouiller le corps (Documents)</French>
+            <Spanish>Registrar el cuerpo (Documentos)</Spanish>
+            <German>Leiche durchsuchen (Dokumente)</German>
+            <Italian>Perquisisci il corpo (Documenti)</Italian>
+            <Polish>Przeszukaj ciało (Dokumenty)</Polish>
+            <Portuguese>Revistar corpo (Documentos)</Portuguese>
+            <Russian>Обыскать тело (Документы)</Russian>
+            <Czech>Prohledat tělo (Dokumenty)</Czech>
+            <Korean>시신 수색 (기밀 문서)</Korean>
+            <Japanese>死体を捜索 (機密文書)</Japanese>
+            <Chinese>搜查屍體 (機密文件)</Chinese>
+            <Chinesesimp>搜查尸体 (机密文件)</Chinesesimp>
+            <Turkish>Cesedi ara (Belgeler)</Turkish>
+        </Key>
+        <Key ID="STR_LL_Task_01_Title">
+            <Original>Recover Documents</Original>
+            <English>Recover Documents</English>
+            <French>Récupérer des documents</French>
+            <Spanish>Recuperar documentos</Spanish>
+            <German>Dokumente beschaffen</German>
+            <Italian>Recupera documenti</Italian>
+            <Polish>Odzyskaj dokumenty</Polish>
+            <Portuguese>Recuperar documentos</Portuguese>
+            <Russian>Захватить документы</Russian>
+            <Czech>Získat dokumenty</Czech>
+            <Korean>기밀 문서 회수</Korean>
+            <Japanese>文書の回収</Japanese>
+            <Chinese>回收機密文件</Chinese>
+            <Chinesesimp>回收机密文件</Chinesesimp>
+            <Turkish>Belgeleri Ele Geçir</Turkish>
+        </Key>
+        <Key ID="STR_LL_Task_01_Desc">
+            <Original>Infiltrate the zone, eliminate the insurgent officer and recover the sensitive documents found on his body.</Original>
+            <English>Infiltrate the zone, eliminate the insurgent officer and recover the sensitive documents found on his body.</English>
+            <French>Infiltrez la zone, éliminez l'officier insurgé et récupérez les documents sensibles sur son corps.</French>
+            <Spanish>Infíltrese en la zona, elimine al oficial insurgente y recupere los documentos confidenciales que lleva consigo.</Spanish>
+            <German>Infiltrieren Sie die Zone, eliminieren Sie den aufständischen Offizier und sichern Sie die geheimen Dokumente bei seiner Leiche.</German>
+            <Italian>Infiltrati nella zona, elimina l'ufficiale ribelle e recupera i documenti sensibili trovati sul suo corpo.</Italian>
+            <Polish>Zinfiltruj strefę, zlikwiduj oficera powstańców i zabezpiecz tajne dokumenty znalezione przy jego ciele.</Polish>
+            <Portuguese>Infiltre-se na zona, elimine o oficial insurgente e recupere os documentos confidenciais encontrados em seu corpo.</Portuguese>
+            <Russian>Проникните в зону, ликвидируйте офицера повстанцев и захватите секретные документы с его тела.</Russian>
+            <Czech>Infiltrujte oblast, zlikvidujte povstaleckého důstojníka a zajistěte tajné dokumenty z jeho těla.</Czech>
+            <Korean>구역에 침투하여 반군 장교를 사살하고 그의 시신에서 기밀 문서를 회수하십시오.</Korean>
+            <Japanese>作戦地域へ潜入し、敵将校を無力化してその遺体から重要機密文書を回収せよ。</Japanese>
+            <Chinese>滲透目標區域，消滅叛軍軍官並從其遺體上回收機密情報文件。</Chinese>
+            <Chinesesimp>渗透目标区域，消灭叛军军官并从其遗体上回收机密情报文件。</Chinesesimp>
+            <Turkish>Bölgeye sızın, isyancı subayı etkisiz hale getirin ve cesedindeki gizli belgeleri ele geçirin.</Turkish>
+        </Key>
+        <Key ID="STR_LL_Task_01_Marker">
+            <Original>Officer (Documents)</Original>
+            <English>Officer (Documents)</English>
+            <French>Officier (Documents)</French>
+            <Spanish>Oficial (Documentos)</Spanish>
+            <German>Offizier (Dokumente)</German>
+            <Italian>Ufficiale (Documenti)</Italian>
+            <Polish>Oficer (Dokumenty)</Polish>
+            <Portuguese>Oficial (Documentos)</Portuguese>
+            <Russian>Офицер (Документы)</Russian>
+            <Czech>Důstojník (Dokumenty)</Czech>
+            <Korean>장교 (문서)</Korean>
+            <Japanese>将校 (文書)</Japanese>
+            <Chinese>軍官 (機密文件)</Chinese>
+            <Chinesesimp>军官 (机密文件)</Chinesesimp>
+            <Turkish>Subay (Belgeler)</Turkish>
+        </Key>
+        <Key ID="STR_LL_Diary_Task01_Title">
+            <Original>Intel: Classified Documents</Original>
+            <English>Intel: Classified Documents</English>
+            <French>Renseignement : Documents Secrets</French>
+            <Spanish>Inteligencia: Documentos Clasificados</Spanish>
+            <German>Aufklärung: Geheime Dokumente</German>
+            <Italian>Informazioni: Documenti Riservati</Italian>
+            <Polish>Wywiad: Niejawne dokumenty</Polish>
+            <Portuguese>Inteligência: Documentos Confidenciais</Portuguese>
+            <Russian>Разведданные: Секретные документы</Russian>
+            <Czech>Zpravodajství: Tajné dokumenty</Czech>
+            <Korean>정보: 기밀 문서</Korean>
+            <Japanese>情報: 機密文書</Japanese>
+            <Chinese>情報：機密文件</Chinese>
+            <Chinesesimp>情报：机密文件</Chinesesimp>
+            <Turkish>İstihbarat: Gizli Belgeler</Turkish>
+        </Key>
+        <Key ID="STR_LL_Diary_Task01_Text">
+            <Original>An insurgent officer in the sector holds critical tactical intelligence. Neutralize him and search his remains to secure the documents.</Original>
+            <English>An insurgent officer in the sector holds critical tactical intelligence. Neutralize him and search his remains to secure the documents.</English>
+            <French>Un officier insurgé présent dans le secteur détient des renseignements tactiques cruciaux. Neutralisez-le et fouillez sa dépouille pour récupérer les documents.</French>
+            <Spanish>Un oficial insurgente en el sector posee información táctica crucial. Neutralícelo y registre sus restos para asegurar los documentos.</Spanish>
+            <German>Ein aufständischer Offizier im Sektor verfügt über entscheidende taktische Aufklärungsdaten. Neutralisieren Sie ihn und durchsuchen Sie die Leiche, um die Dokumente zu sichern.</German>
+            <Italian>Un ufficiale ribelle nel settore è in possesso di informazioni tattiche cruciali. Neutralizzalo e cerca tra i suoi resti per mettere al sicuro i documenti.</Italian>
+            <Polish>Oficer powstańców w tym rejonie posiada kluczowe dane taktyczne. Zneutralizuj go i przeszukaj ciało, aby zdobyć dokumenty.</Polish>
+            <Portuguese>Um oficial insurgente no setor possui inteligência tática crítica. Neutralize-o e reviste os restos mortais para assegurar os documentos.</Portuguese>
+            <Russian>Офицер повстанцев в данном секторе владеет важнейшими тактическими разведданными. Ликвидируйте его и обыщите тело для захвата документов.</Russian>
+            <Czech>Povstalecký důstojník v oblasti disponuje klíčovými taktickými informacemi. Neutralizujte ho a prohledejte jeho tělo pro získání dokumentů.</Czech>
+            <Korean>해당 구역의 반군 장교가 중요 전술 정보를 보유하고 있습니다. 그를 사살하고 유류품을 수색하여 문서를 확보하십시오.</Korean>
+            <Japanese>作戦区域内の敵将校が重要軍事情報を保持している。対象を排除し、遺留品から文書を確保せよ。</Japanese>
+            <Chinese>該防區的一名叛軍軍官持有重大戰術情報。將其擊斃並搜查其遺物以奪取情報文件。</Chinese>
+            <Chinesesimp>该防区的一名叛军军官持有重大战术情报。将其击毙并搜查其遗物以夺取情报文件。</Chinesesimp>
+            <Turkish>Bölgedeki bir isyancı subay kritik taktik istihbarata sahip. Onu etkisiz hale getirin ve belgeleri güvenceye almak için cesedini arayın.</Turkish>
+        </Key>
+        <Key ID="STR_LL_Task_08_Flyover_ETA">
+            <Original>(Cargo flyover ETA %1 min)</Original>
+            <English>(Cargo flyover ETA %1 min)</English>
+            <French>(Survol cargo ETA %1 min)</French>
+            <Spanish>(Sobrevuelo de carga ETA %1 min)</Spanish>
+            <German>(Frachtflugzeug-Überflug ETA %1 Min.)</German>
+            <Italian>(Sorvolo cargo ETA %1 min)</Italian>
+            <Polish>(Przelot transportowca ETA %1 min)</Polish>
+            <Portuguese>(Sobrevôo de carga ETA %1 min)</Portuguese>
+            <Russian>(Пролет транспортника расчетное время %1 мин)</Russian>
+            <Czech>(Přelet nákladního letadla ETA %1 min)</Czech>
+            <Korean>(수송기 공역 진입 예상 시간 %1분)</Korean>
+            <Japanese>(輸送機上空通過 予定時間 %1分)</Japanese>
+            <Chinese>(運輸機預計 %1 分鐘後飛越)</Chinese>
+            <Chinesesimp>(运输机预计 %1 分钟后飞越)</Chinesesimp>
+            <Turkish>(Kargo uçuşu tahmini varış %1 dk)</Turkish>
+        </Key>
+        <Key ID="STR_LL_Arsenal_UniformForbidden">
+            <Original>Command prohibits altering regulation combat uniform.</Original>
+            <English>Command prohibits altering regulation combat uniform.</English>
+            <French>Le commandement interdit la modification de l'uniforme réglementaire.</French>
+            <Spanish>El mando prohíbe modificar el uniforme de combate reglamentario.</Spanish>
+            <German>Das Kommando untersagt das Ändern der vorschriftsmäßigen Kampfuniform.</German>
+            <Italian>Il comando vieta la modifica dell'uniforme da combattimento d'ordinanza.</Italian>
+            <Polish>Dowództwo zabrania modyfikowania regulaminowego munduru bojowego.</Polish>
+            <Portuguese>O comando proíbe a alteração do uniforme de combate regulamentar.</Portuguese>
+            <Russian>Командование запрещает изменять уставную боевую форму.</Russian>
+            <Czech>Velitelství zakazuje úpravy předpisové polní uniformy.</Czech>
+            <Korean>지휘부는 규정 전투복의 임의 변경을 엄격히 금지합니다.</Korean>
+            <Japanese>司令部により規定戦闘服の変更は固く禁じられている。</Japanese>
+            <Chinese>指揮部嚴禁私自更換制式作戰軍服。</Chinese>
+            <Chinesesimp>指挥部严禁私自更换制式作战军服。</Chinesesimp>
+            <Turkish>Komutanlık nizami muharebe üniformasının değiştirilmesini yasaklar.</Turkish>
+        </Key>
+        <Key ID="STR_LL_Arsenal_HeadgearForbidden">
+            <Original>Standard Legion headgear must be retained.</Original>
+            <English>Standard Legion headgear must be retained.</English>
+            <French>Le couvre-chef standard de la Légion doit être conservé.</French>
+            <Spanish>Se debe conservar el casco estándar de la Legión.</Spanish>
+            <German>Die standardmäßige Legion-Kopfbedeckung muss beibehalten werden.</German>
+            <Italian>Il copricapo standard della Legione deve essere mantenuto.</Italian>
+            <Polish>Standardowe nakrycie głowy Legionu musi zostać zachowane.</Polish>
+            <Portuguese>A cobertura de cabeça padrão da Legião deve ser mantida.</Portuguese>
+            <Russian>Уставной головной убор Легиона должен быть сохранен.</Russian>
+            <Czech>Standardní pokrývka hlavy Legie musí zůstat zachována.</Czech>
+            <Korean>군단 표준 헬멧 및 모자를 반드시 착용해야 합니다.</Korean>
+            <Japanese>部隊指定の軍団ヘッドギアを着用し続けなければならない。</Japanese>
+            <Chinese>必須保留軍團制式頭盔與戰術帽。</Chinese>
+            <Chinesesimp>必须保留军团制式头盔与战术帽。</Chinesesimp>
+            <Turkish>Standart Lejyon başlığı muhafaza edilmelidir.</Turkish>
+        </Key>
+        <Key ID="STR_LL_OverviewText">
+            <Original>Takistan — RACS Foreign Legion Tactical Operations. Choose your missions and deploy your squad dynamically.</Original>
+            <English>Takistan — RACS Foreign Legion Tactical Operations. Choose your missions and deploy your squad dynamically.</English>
+            <French>Takistan — Opérations Tactiques de la Légion Étrangère RACS. Choisissez vos missions et déployez votre escouade dynamiquement.</French>
+            <Spanish>Takistán — Operaciones Tácticas de la Legión Extranjera RACS. Elige tus misiones y despliega tu escuadrón dinámicamente.</Spanish>
+            <German>Takistan — Taktische Operationen der RACS-Fremdenlegion. Wählen Sie Ihre Missionen und setzen Sie Ihren Trupp dynamisch ein.</German>
+            <Italian>Takistan — Operazioni Tattiche della Legione Straniera RACS. Scegli le tue missioni e schiera la tua squadra dinamicamente.</Italian>
+            <Polish>Takistan — Operacje Taktyczne Legii Cudzoziemskiej RACS. Wybierz misje i dynamicznie rozmieść swoją drużynę.</Polish>
+            <Portuguese>Takistan — Operações Táticas da Legião Estrangeira RACS. Escolha as suas missões e posicione o seu esquadrão dinamicamente.</Portuguese>
+            <Russian>Такистан — Тактические операции Иностранного Легиона RACS. Выбирайте задания и динамически развертывайте свое отделение.</Russian>
+            <Czech>Takistan — Taktické operace cizinecké legie RACS. Zvolte si mise a dynamicky nasaďte své družstvo.</Czech>
+            <Turkish>Takistan — RACS Yabancı Lejyonu Taktik Operasyonları. Görevlerinizi seçin ve manganızı dinamik olarak konuşlandırın.</Turkish>
+            <Japanese>タキスタン — RACS外人部隊戦術作戦。任務を選択し、分隊をダイナミックに展開せよ。</Japanese>
+            <Korean>타키스탄 — RACS 외인부대 전술 작전. 임무를 선택하고 분대를 동적으로 전개하십시오.</Korean>
+            <Chinese>塔基斯坦 — 薩拉尼皇家陸軍外籍軍團戰術作戰。自由選擇任務並動態部署您的小隊。</Chinese>
+            <Chinesesimp>塔基斯坦 — 萨拉尼皇家陆军外籍军团战术作战。自由选择任务并动态部署您的小队。</Chinesesimp>
+        </Key>
+        </Key>
     </Package>
     <Package name="Team">
         <Key ID="STR_LL_RoeAction_Infiltration">
@@ -3423,6 +3611,76 @@ Sadece hassas atış. Hedef araç yakınında patlayıcı yasaktır.</Turkish>
             <Chinese>防御</Chinese>
             <Chinesesimp>防御</Chinesesimp>
             <Turkish>Savunma</Turkish>
+        </Key>
+    </Package>
+    <Package name="UI">
+        <Key ID="STR_LL_Radio_Speaker_Drone">
+            <Original>Drone Operator</Original>
+            <English>Drone Operator</English>
+            <French>Opérateur Drone</French>
+            <Spanish>Operador de Dron</Spanish>
+            <German>Drohnen-Bediener</German>
+            <Italian>Operatore Drone</Italian>
+            <Polish>Operator drona</Polish>
+            <Portuguese>Operador de Drone</Portuguese>
+            <Russian>Оператор БПЛА</Russian>
+            <Czech>Operátor dronu</Czech>
+            <Korean>드론 운용관</Korean>
+            <Japanese>ドローン オペレーター</Japanese>
+            <Chinese>無人機操作員</Chinese>
+            <Chinesesimp>无人机操作员</Chinesesimp>
+            <Turkish>İHA Operatörü</Turkish>
+        </Key>
+        <Key ID="STR_LL_Radio_Speaker_AirSupport">
+            <Original>Air Support</Original>
+            <English>Air Support</English>
+            <French>Appui Aérien</French>
+            <Spanish>Apoyo Aéreo</Spanish>
+            <German>Luftunterstützung</German>
+            <Italian>Supporto Aereo</Italian>
+            <Polish>Wsparcie lotnicze</Polish>
+            <Portuguese>Apoio Aéreo</Portuguese>
+            <Russian>Авиаподдержка</Russian>
+            <Czech>Letecká podpora</Czech>
+            <Korean>공중 지원</Korean>
+            <Japanese>近接航空支援</Japanese>
+            <Chinese>空中支援</Chinese>
+            <Chinesesimp>空中支援</Chinesesimp>
+            <Turkish>Hava Desteği</Turkish>
+        </Key>
+        <Key ID="STR_LL_Radio_Speaker_HQ">
+            <Original>HQ</Original>
+            <English>HQ</English>
+            <French>QG</French>
+            <Spanish>CG</Spanish>
+            <German>HQ</German>
+            <Italian>QG</Italian>
+            <Polish>Sztab</Polish>
+            <Portuguese>QG</Portuguese>
+            <Russian>Штаб</Russian>
+            <Czech>Velitelství</Czech>
+            <Korean>사령부</Korean>
+            <Japanese>司令部</Japanese>
+            <Chinese>作戰總部</Chinese>
+            <Chinesesimp>作战总部</Chinesesimp>
+            <Turkish>Karargah</Turkish>
+        </Key>
+        <Key ID="STR_Drone_Jammed">
+            <Original>Radio jamming detected. Unable to reach drone.</Original>
+            <English>Radio jamming detected. Unable to reach drone.</English>
+            <French>Brouillage radio détecté. Impossible de contacter le drone.</French>
+            <Spanish>Interferencia de radio detectada. No se puede contactar con el dron.</Spanish>
+            <German>Funkstörung erkannt. Drohne kann nicht erreicht werden.</German>
+            <Italian>Rilevato disturbo radio. Impossibile contattare il drone.</Italian>
+            <Polish>Wykryto zakłócenia radiowe. Nie można połączyć się z dronem.</Polish>
+            <Portuguese>Interferência de rádio detectada. Impossível contactar o drone.</Portuguese>
+            <Russian>Обнаружены радиопомехи. Связь с БПЛА невозможна.</Russian>
+            <Czech>Zjištěno rušení rádia. S dronem se nelze spojit.</Czech>
+            <Korean>전파 방해가 감지되었습니다. 드론과 통신할 수 없습니다.</Korean>
+            <Japanese>通信妨害を感知。ドローンとの交信不能。</Japanese>
+            <Chinese>偵測到無線電干擾，無法聯繫無人機。</Chinese>
+            <Chinesesimp>检测到无线电干扰，无法联系无人机。</Chinesesimp>
+            <Turkish>Telsiz karıştırması tespit edildi. İHA ile iletişim kurulamıyor.</Turkish>
         </Key>
     </Package>
 </Project>

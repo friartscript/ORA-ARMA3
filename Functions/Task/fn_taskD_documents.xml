@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Keys>
+    <Key ID="STR_LL_Task_01_Action">
+        <Original>Search body (Documents)</Original>
+        <English>Search body (Documents)</English>
+        <French>Fouiller le corps (Documents)</French>
+        <Spanish>Registrar el cuerpo (Documentos)</Spanish>
+        <German>Leiche durchsuchen (Dokumente)</German>
+        <Italian>Perquisisci il corpo (Documenti)</Italian>
+        <Polish>Przeszukaj ciało (Dokumenty)</Polish>
+        <Portuguese>Revistar corpo (Documentos)</Portuguese>
+        <Russian>Обыскать тело (Документы)</Russian>
+        <Czech>Prohledat tělo (Dokumenty)</Czech>
+        <Korean>시신 수색 (기밀 문서)</Korean>
+        <Japanese>死体を捜索 (機密文書)</Japanese>
+        <Chinese>搜查屍體 (機密文件)</Chinese>
+        <Chinesesimp>搜查尸体 (机密文件)</Chinesesimp>
+        <Turkish>Cesedi ara (Belgeler)</Turkish>
+    </Key>
+    <Key ID="STR_LL_Task_01_Title">
+        <Original>Recover Documents</Original>
+        <English>Recover Documents</English>
+        <French>Récupérer des documents</French>
+        <Spanish>Recuperar documentos</Spanish>
+        <German>Dokumente beschaffen</German>
+        <Italian>Recupera documenti</Italian>
+        <Polish>Odzyskaj dokumenty</Polish>
+        <Portuguese>Recuperar documentos</Portuguese>
+        <Russian>Захватить документы</Russian>
+        <Czech>Získat dokumenty</Czech>
+        <Korean>기밀 문서 회수</Korean>
+        <Japanese>文書の回収</Japanese>
+        <Chinese>回收機密文件</Chinese>
+        <Chinesesimp>回收机密文件</Chinesesimp>
+        <Turkish>Belgeleri Ele Geçir</Turkish>
+    </Key>
+    <Key ID="STR_LL_Task_01_Desc">
+        <Original>Infiltrate the zone, eliminate the insurgent officer and recover the sensitive documents found on his body.</Original>
+        <English>Infiltrate the zone, eliminate the insurgent officer and recover the sensitive documents found on his body.</English>
+        <French>Infiltrez la zone, éliminez l'officier insurgé et récupérez les documents sensibles sur son corps.</French>
+        <Spanish>Infíltrese en la zona, elimine al oficial insurgente y recupere los documentos confidenciales que lleva consigo.</Spanish>
+        <German>Infiltrieren Sie die Zone, eliminieren Sie den aufständischen Offizier und sichern Sie die geheimen Dokumente bei seiner Leiche.</German>
+        <Italian>Infiltrati nella zona, elimina l'ufficiale ribelle e recupera i documenti sensibili trovati sul suo corpo.</Italian>
+        <Polish>Zinfiltruj strefę, zlikwiduj oficera powstańców i zabezpiecz tajne dokumenty znalezione przy jego ciele.</Polish>
+        <Portuguese>Infiltre-se na zona, elimine o oficial insurgente e recupere os documentos confidenciais encontrados em seu corpo.</Portuguese>
+        <Russian>Проникните в зону, ликвидируйте офицера повстанцев и захватите секретные документы с его тела.</Russian>
+        <Czech>Infiltrujte oblast, zlikvidujte povstaleckého důstojníka a zajistěte tajné dokumenty z jeho těla.</Czech>
+        <Korean>구역에 침투하여 반군 장교를 사살하고 그의 시신에서 기밀 문서를 회수하십시오.</Korean>
+        <Japanese>作戦地域へ潜入し、敵将校を無力化してその遺体から重要機密文書を回収せよ。</Japanese>
+        <Chinese>滲透目標區域，消滅叛軍軍官並從其遺體上回收機密情報文件。</Chinese>
+        <Chinesesimp>渗透目标区域，消灭叛军军官并从其遗体上回收机密情报文件。</Chinesesimp>
+        <Turkish>Bölgeye sızın, isyancı subayı etkisiz hale getirin ve cesedindeki gizli belgeleri ele geçirin.</Turkish>
+    </Key>
+    <Key ID="STR_LL_Task_01_Marker">
+        <Original>Officer (Documents)</Original>
+        <English>Officer (Documents)</English>
+        <French>Officier (Documents)</French>
+        <Spanish>Oficial (Documentos)</Spanish>
+        <German>Offizier (Dokumente)</German>
+        <Italian>Ufficiale (Documenti)</Italian>
+        <Polish>Oficer (Dokumenty)</Polish>
+        <Portuguese>Oficial (Documentos)</Portuguese>
+        <Russian>Офицер (Документы)</Russian>
+        <Czech>Důstojník (Dokumenty)</Czech>
+        <Korean>장교 (문서)</Korean>
+        <Japanese>将校 (文書)</Japanese>
+        <Chinese>軍官 (機密文件)</Chinese>
+        <Chinesesimp>军官 (机密文件)</Chinesesimp>
+        <Turkish>Subay (Belgeler)</Turkish>
+    </Key>
+    <Key ID="STR_LL_Diary_Task01_Title">
+        <Original>Intel: Classified Documents</Original>
+        <English>Intel: Classified Documents</English>
+        <French>Renseignement : Documents Secrets</French>
+        <Spanish>Inteligencia: Documentos Clasificados</Spanish>
+        <German>Aufklärung: Geheime Dokumente</German>
+        <Italian>Informazioni: Documenti Riservati</Italian>
+        <Polish>Wywiad: Niejawne dokumenty</Polish>
+        <Portuguese>Inteligência: Documentos Confidenciais</Portuguese>
+        <Russian>Разведданные: Секретные документы</Russian>
+        <Czech>Zpravodajství: Tajné dokumenty</Czech>
+        <Korean>정보: 기밀 문서</Korean>
+        <Japanese>情報: 機密文書</Japanese>
+        <Chinese>情報：機密文件</Chinese>
+        <Chinesesimp>情报：机密文件</Chinesesimp>
+        <Turkish>İstihbarat: Gizli Belgeler</Turkish>
+    </Key>
+    <Key ID="STR_LL_Diary_Task01_Text">
+        <Original>An insurgent officer in the sector holds critical tactical intelligence. Neutralize him and search his remains to secure the documents.</Original>
+        <English>An insurgent officer in the sector holds critical tactical intelligence. Neutralize him and search his remains to secure the documents.</English>
+        <French>Un officier insurgé présent dans le secteur détient des renseignements tactiques cruciaux. Neutralisez-le et fouillez sa dépouille pour récupérer les documents.</French>
+        <Spanish>Un oficial insurgente en el sector posee información táctica crucial. Neutralícelo y registre sus restos para asegurar los documentos.</Spanish>
+        <German>Ein aufständischer Offizier im Sektor verfügt über entscheidende taktische Aufklärungsdaten. Neutralisieren Sie ihn und durchsuchen Sie die Leiche, um die Dokumente zu sichern.</German>
+        <Italian>Un ufficiale ribelle nel settore è in possesso di informazioni tattiche cruciali. Neutralizzalo e cerca tra i suoi resti per mettere al sicuro i documenti.</Italian>
+        <Polish>Oficer powstańców w tym rejonie posiada kluczowe dane taktyczne. Zneutralizuj go i przeszukaj ciało, aby zdobyć dokumenty.</Polish>
+        <Portuguese>Um oficial insurgente no setor possui inteligência tática crítica. Neutralize-o e reviste os restos mortais para assegurar os documentos.</Portuguese>
+        <Russian>Офицер повстанцев в данном секторе владеет важнейшими тактическими разведданными. Ликвидируйте его и обыщите тело для захвата документов.</Russian>
+        <Czech>Povstalecký důstojník v oblasti disponuje klíčovými taktickými informacemi. Neutralizujte ho a prohledejte jeho tělo pro získání dokumentů.</Czech>
+        <Korean>해당 구역의 반군 장교가 중요 전술 정보를 보유하고 있습니다. 그를 사살하고 유류품을 수색하여 문서를 확보하십시오.</Korean>
+        <Japanese>作戦区域内の敵将校が重要軍事情報を保持している。対象を排除し、遺留品から文書を確保せよ。</Japanese>
+        <Chinese>該防區的一名叛軍軍官持有重大戰術情報。將其擊斃並搜查其遺物以奪取情報文件。</Chinese>
+        <Chinesesimp>该防区的一名叛军军官持有重大战术情报。将其击毙并搜查其遗物以夺取情报文件。</Chinesesimp>
+        <Turkish>Bölgedeki bir isyancı subay kritik taktik istihbarata sahip. Onu etkisiz hale getirin ve belgeleri güvenceye almak için cesedini arayın.</Turkish>
+    </Key>
+</Keys>

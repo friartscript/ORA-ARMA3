@@ -135,7 +135,7 @@ for "_i" from 0 to (_numSpawns - 1) do {
                 }];
             };
 
-            private _actionTitle = format ["<t color='#FFFF00'>%1</t>", "Fouiller le corps (Documents)"];
+            private _actionTitle = format ["<t color='#FFFF00'>%1</t>", localize "STR_LL_Task_01_Action"];
             
             [
                 _unit, 
@@ -153,9 +153,9 @@ for "_i" from 0 to (_numSpawns - 1) do {
                     if (missionNamespace getVariable ["LL_TaskD_Doc_Triggered", false]) exitWith {};
                     missionNamespace setVariable ["LL_TaskD_Doc_Triggered", true];
                     
-                    if (_caller canAdd "Item_Document_01_F") then { _caller addItem "Item_Document_01_F"; };
+
                     
-                    [_target, _actionId] call BIS_fnc_holdActionRemove;
+
                     [_unit] call (missionNamespace getVariable "LL_fnc_taskD_docComplete");
                 }, 
                 {}, 

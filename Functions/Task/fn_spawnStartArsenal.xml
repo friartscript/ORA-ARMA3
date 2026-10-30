@@ -1,20 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Keys>
-    <Key ID="STR_LL_StartArsenal_Marker">
-        <Original>PREPARATION (Arsenal)</Original>
-        <French>PREPARATIFS (Arsenal)</French>
-        <English>PREPARATION (Arsenal)</English>
-        <Spanish>PREPARACIÓN (Arsenal)</Spanish>
-        <Italian>PREPARAZIONE (Arsenal)</Italian>
-        <German>VORBEREITUNG (Arsenal)</German>
-        <Polish>PRZYGOTOWANIE (Arsenał)</Polish>
-        <Russian>ПОДГОТОВКА (Арсенал)</Russian>
-        <Turkish>HAZIRLIK (Arsenal)</Turkish>
-        <Japanese>準備 (アーセナル)</Japanese>
-        <Korean>준비 (아스날)</Korean>
-        <Chinese>准备 (兵器库)</Chinese>
-        <Chinesesimp>准备 (兵器库)</Chinesesimp>
-        <Czech>PŘÍPRAVA (Arzenál)</Czech>
-        <Portuguese>PREPARAÇÃO (Arsenal)</Portuguese>
+    <Key ID="STR_LL_Arsenal_UniformForbidden">
+        <Original>Command prohibits altering regulation combat uniform.</Original>
+        <English>Command prohibits altering regulation combat uniform.</English>
+        <French>Le commandement interdit la modification de l'uniforme réglementaire.</French>
+        <Spanish>El mando prohíbe modificar el uniforme de combate reglamentario.</Spanish>
+        <German>Das Kommando untersagt das Ändern der vorschriftsmäßigen Kampfuniform.</German>
+        <Italian>Il comando vieta la modifica dell'uniforme da combattimento d'ordinanza.</Italian>
+        <Polish>Dowództwo zabrania modyfikowania regulaminowego munduru bojowego.</Polish>
+        <Portuguese>O comando proíbe a alteração do uniforme de combate regulamentar.</Portuguese>
+        <Russian>Командование запрещает изменять уставную боевую форму.</Russian>
+        <Czech>Velitelství zakazuje úpravy předpisové polní uniformy.</Czech>
+        <Korean>지휘부는 규정 전투복의 임의 변경을 엄격히 금지합니다.</Korean>
+        <Japanese>司令部により規定戦闘服の変更は固く禁じられている。</Japanese>
+        <Chinese>指揮部嚴禁私自更換制式作戰軍服。</Chinese>
+        <Chinesesimp>指挥部严禁私自更换制式作战军服。</Chinesesimp>
+        <Turkish>Komutanlık nizami muharebe üniformasının değiştirilmesini yasaklar.</Turkish>
+    </Key>
+    <Key ID="STR_LL_Arsenal_HeadgearForbidden">
+        <Original>Standard Legion headgear must be retained.</Original>
+        <English>Standard Legion headgear must be retained.</English>
+        <French>Le couvre-chef standard de la Légion doit être conservé.</French>
+        <Spanish>Se debe conservar el casco estándar de la Legión.</Spanish>
+        <German>Die standardmäßige Legion-Kopfbedeckung muss beibehalten werden.</German>
+        <Italian>Il copricapo standard della Legione deve essere mantenuto.</Italian>
+        <Polish>Standardowe nakrycie głowy Legionu musi zostać zachowane.</Polish>
+        <Portuguese>A cobertura de cabeça padrão da Legião deve ser mantida.</Portuguese>
+        <Russian>Уставной головной убор Легиона должен быть сохранен.</Russian>
+        <Czech>Standardní pokrývka hlavy Legie musí zůstat zachována.</Czech>
+        <Korean>군단 표준 헬멧 및 모자를 반드시 착용해야 합니다.</Korean>
+        <Japanese>部隊指定の軍団ヘッドギアを着用し続けなければならない。</Japanese>
+        <Chinese>必須保留軍團制式頭盔與戰術帽。</Chinese>
+        <Chinesesimp>必须保留军团制式头盔与战术帽。</Chinesesimp>
+        <Turkish>Standart Lejyon başlığı muhafaza edilmelidir.</Turkish>
     </Key>
 </Keys>

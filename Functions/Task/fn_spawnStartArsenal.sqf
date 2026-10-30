@@ -35,11 +35,11 @@ if (!isServer) exitWith {};
         
         if (uniform player != _oldU) then {
             player forceAddUniform _oldU;
-            systemChat "Le commandement interdit la modification de l'uniforme réglementaire.";
+            systemChat (localize "STR_LL_Arsenal_UniformForbidden");
         };
         if (headgear player != _oldH) then {
             player addHeadgear _oldH;
-            systemChat "Le couvre-chef standard de la Légion doit être conservé.";
+            systemChat (localize "STR_LL_Arsenal_HeadgearForbidden");
         };
         
         // Réappliquer le badge instantanément

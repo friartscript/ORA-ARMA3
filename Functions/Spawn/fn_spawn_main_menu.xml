@@ -459,4 +459,21 @@
         <Chinesesimp>叛军威胁 (罕见的平民伪装伏击)</Chinesesimp>
         <Turkish>İsyancı Tehdidi (Nadir sivil pusuları)</Turkish>
     </Key>
+    <Key ID="STR_MAIN_MENU_EXTRACTION_ALERT">
+        <Original>&lt;t color='#FF3333' size='0.85' font='PuristaBold'&gt;⚠️ EXTRACTION NOTICE:&lt;br/&gt;Extraction is strictly MANUAL via radio Support (0-8-3), NEVER automatic! You can call it at any time.&lt;/t&gt;</Original>
+        <English>&lt;t color='#FF3333' size='0.85' font='PuristaBold'&gt;⚠️ EXTRACTION NOTICE:&lt;br/&gt;Extraction is strictly MANUAL via radio Support (0-8-3), NEVER automatic! You can call it at any time.&lt;/t&gt;</English>
+        <French>&lt;t color='#FF3333' size='0.85' font='PuristaBold'&gt;⚠️ AVIS D'EXTRACTION :&lt;br/&gt;L'extraction est strictement MANUELLE via le menu Support (0-8-3), JAMAIS automatique ! Vous pouvez l'appeler à tout moment.&lt;/t&gt;</French>
+        <Spanish>&lt;t color='#FF3333' size='0.85' font='PuristaBold'&gt;⚠️ AVISO DE EXTRACCIÓN:&lt;br/&gt;¡La extracción es estrictamente MANUAL a través del menú Soporte (0-8-3), NUNCA automática! Puede solicitarla en cualquier momento.&lt;/t&gt;</Spanish>
+        <German>&lt;t color='#FF3333' size='0.85' font='PuristaBold'&gt;⚠️ EVAKUIERUNGSHINWEIS:&lt;br/&gt;Die Evakuierung erfolgt ausschließlich MANUELL über das Funkmenü Support (0-8-3), NIEMALS automatisch! Sie kann jederzeit angefordert werden.&lt;/t&gt;</German>
+        <Italian>&lt;t color='#FF3333' size='0.85' font='PuristaBold'&gt;⚠️ AVVISO DI ESTRAZIONE:&lt;br/&gt;L'estrazione è rigorosamente MANUALE tramite la radio Supporto (0-8-3), MAI automatica! Puoi richiederla in qualsiasi momento.&lt;/t&gt;</Italian>
+        <Polish>&lt;t color='#FF3333' size='0.85' font='PuristaBold'&gt;⚠️ UWAGA DOTYCZĄCA EWAKUACJI:&lt;br/&gt;Ewakuacja jest wyłącznie RĘCZNA przez menu Wsparcia (0-8-3), NIGDY automatyczna! Możesz ją wezwać w dowolnym momencie.&lt;/t&gt;</Polish>
+        <Portuguese>&lt;t color='#FF3333' size='0.85' font='PuristaBold'&gt;⚠️ AVISO DE EXTRAÇÃO:&lt;br/&gt;A extração é estritamente MANUAL através do menu Suporte (0-8-3), NUNCA automática! Pode solicitá-la a qualquer momento.&lt;/t&gt;</Portuguese>
+        <Russian>&lt;t color='#FF3333' size='0.85' font='PuristaBold'&gt;⚠️ ВАЖНОЕ ПРЕДУПРЕЖДЕНИЕ:&lt;br/&gt;Эвакуация вызывается исключительно ВРУЧНУЮ через меню Поддержки (0-8-3), а НЕ автоматически! Вы можете запросить её в любой момент.&lt;/t&gt;</Russian>
+        <Czech>&lt;t color='#FF3333' size='0.85' font='PuristaBold'&gt;⚠️ UPOZORNĚNÍ K EVAKUACI:&lt;br/&gt;Evakuace je striktně MANUÁLNÍ přes menu Podpory (0-8-3), NIKDY automatická! Můžete ji povolat kdykoliv.&lt;/t&gt;</Czech>
+        <Turkish>&lt;t color='#FF3333' size='0.85' font='PuristaBold'&gt;⚠️ TAHLİYE UYARISI:&lt;br/&gt;Tahliye kesinlikle Destek menüsünden (0-8-3) MANUEL olarak çağrılır, ASLA otomatik gerçekleşmez! İstediğiniz an tahliye çağırabilirsiniz.&lt;/t&gt;</Turkish>
+        <Japanese>&lt;t color='#FF3333' size='0.85' font='PuristaBold'&gt;⚠️ 脱出に関する重要警告:&lt;br/&gt;脱出はサポートメニュー(0-8-3)からの完全手動要請であり、自動では絶対に発生しません！いつでも好きなタイミングで要請可能です。&lt;/t&gt;</Japanese>
+        <Korean>&lt;t color='#FF3333' size='0.85' font='PuristaBold'&gt;⚠️ 탈출 관련 중요 안내:&lt;br/&gt;탈출은 지원 메뉴(0-8-3)를 통해 100% 수동으로 요청해야 하며, 자동으로 진행되지 않습니다! 언제든지 원할 때 요청할 수 있습니다.&lt;/t&gt;</Korean>
+        <Chinese>&lt;t color='#FF3333' size='0.85' font='PuristaBold'&gt;⚠️ 撤離重要提示：&lt;br/&gt;撤離行動必須由玩家透過支援選單 (0-8-3) 手動呼叫，絕非自動觸發！您可以在行動中隨時呼叫撤離。&lt;/t&gt;</Chinese>
+        <Chinesesimp>&lt;t color='#FF3333' size='0.85' font='PuristaBold'&gt;⚠️ 撤离重要提示：&lt;br/&gt;撤离行动必须由玩家通过支援菜单 (0-8-3) 手动呼叫，绝非自动触发！您可以在行动中随时呼叫撤离。&lt;/t&gt;</Chinesesimp>
+    </Key>
 </Keys>

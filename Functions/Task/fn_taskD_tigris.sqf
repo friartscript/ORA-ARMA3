@@ -305,7 +305,7 @@ private _addActionCode = {
             private _min = ceil (_rem / 60);
             if (_min != _lastFlyoverMin) then {
                 _lastFlyoverMin = _min;
-                private _etaText = format ["(Survol cargo ETA %1 min)", _min];
+                private _etaText = format [localize "STR_LL_Task_08_Flyover_ETA", _min];
                 ["task_tigris", [localize "STR_LL_Task_08_Desc", format ["%1 %2", localize "STR_LL_Task_08_Title", _etaText], ""]] call BIS_fnc_taskSetDescription;
             };
             sleep 5;

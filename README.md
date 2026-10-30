@@ -7,10 +7,11 @@
 ![Mods](https://img.shields.io/badge/Dependencies-CUP%20%7C%20Max%20Women-orange?style=for-the-badge)
 ![Languages](https://img.shields.io/badge/Localization-14%20Languages-green?style=for-the-badge)
 ![Author](https://img.shields.io/badge/Author-Friart%20Script-purple?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-Fully%20Optimized%20%26%20Tested-success?style=for-the-badge)
 
 **Un générateur d'opérations dynamiques en bac à sable et un centre de commandement tactique immersif pour Arma 3 Solo.**
 
-[Vue d'Ensemble](#-vue-densemble) • [Contexte & Lore](#-contexte-stratégique--lore) • [Fonctionnalités Clés](#-fonctionnalités-majeures) • [Opérations Tactiques](#-catalogue-des-missions) • [Commandement & R.O.E](#-règles-dengagement--commandement-descouade) • [Dépendances & Installation](#-installation--dépendances) • [Architecture](#-architecture-technique)
+[Vue d'Ensemble](#-vue-densemble) • [Lore & Contexte](#-contexte-stratégique--lore) • [Fonctionnalités Clés](#-fonctionnalités-majeures) • [Opérations](#-catalogue-des-missions) • [Commandement & R.O.E](#-règles-dengagement--commandement-descouade) • [Menu Radio Support 0-8](#-menu-radio-support-0-8) • [Installation & Dépendances](#-installation--dépendances) • [Localisation](#-localisation-multilingue-14-langues) • [Architecture](#-architecture-technique)
 
 ---
 
@@ -22,7 +23,7 @@
 
 **Operation Royal Alliance (ORA)** est une mission solo tactique non-linéaire qui réinvente l'expérience d'engagement en milieu aride sur le théâtre d'opérations du **Takistan**. 
 
-Incarnez le chef de groupe d'une escouade de la **Légion Étrangère du RACS** (*Royal Army Corps of Sahrani*). Grâce à un **lanceur tactique 3D sur mesure**, planifiez votre vecteur d'insertion, sélectionnez votre appui motorisé, réglez la météo et enchaînez des missions procédurales infinies dans un environnement moyen-oriental vivant et hautement réactif.
+Incarnez le chef de groupe d'une escouade de la **Légion Étrangère du RACS** (*Royal Army Corps of Sahrani*). Grâce à un **lanceur tactique 3D sur mesure**, planifiez votre secteur d'insertion, sélectionnez votre appui motorisé, réglez les conditions météo et enchaînez des missions procédurales dans un environnement moyen-oriental vivant et hautement réactif.
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────────┐
@@ -30,9 +31,15 @@ Incarnez le chef de groupe d'une escouade de la **Légion Étrangère du RACS** 
 │  (GUI 3 Panneaux & PiP)     (UH-60L ou C-130 HALO) (Missions Procédurales)   │
 │                                                                │             │
 │  FIN DE SESSION ◄──────────── EXTRACTION HÉLIPORTÉE ◄──────────┘             │
-│  (Rapport de Mission)         (UH-60 CAS & Évacuation)                       │
+│  (Rapport de Mission)         (Support Radio 0-8-3 • MANUELLE À LA DEMANDE)  │
 └──────────────────────────────────────────────────────────────────────────────┘
 ```
+
+> [!IMPORTANT]
+> ### 🚨 DIRECTIVE D'EXTRACTION CRUCIALE
+> **L'évacuation de la zone d'opération est STRICTEMENT MANUELLE.**  
+> L'hélicoptère d'extraction ne viendra **JAMAIS** de façon automatique après avoir accompli vos tâches. Vous êtes libre d'ordonner l'extraction à tout moment (après un, deux ou trois objectifs, ou même en cas de retraite d'urgence si votre escouade est décimée) via votre radio :  
+> 👉 **Menu Communication Radio `0-8-3` (ou molette d'action)**.
 
 ---
 
@@ -51,69 +58,80 @@ Le **Takistan** est plongé dans une guerre civile sanglante. Carrefour géostra
 ### 🖥️ 1. Lanceur de Mission Tactique Interactif (GUI)
 * **Centre de Commandement 3D :** Interface graphique à 3 volets déployée avant chaque départ en mission.
 * **Vecteurs d'Insertion Dédiés :**
-  * *Vol basse altitude :* Insertion cinématique à bord d'un hélicoptère **UH-60L Black Hawk** au ras du relief.
+  * *Vol basse altitude :* Insertion cinématique à bord d'un hélicoptère **UH-60L Black Hawk** au ras du relief avec atterrissage tactique.
   * *Parachutage HALO :* Largage à haute altitude depuis un avion-cargo **C-130J Hercules**.
-* **Visualiseur 3D en Temps Réel (PiP) :** Sélection interactive du véhicule terrestre d'appui (Land Rover MG RACS) avec rendu caméra 3D dynamique.
-* **Météorologie Dynamique :** Paramétrage temps réel de l'heure, du brouillard et de la nébulosité.
+* **Visualiseur 3D en Temps Réel (PiP) :** Sélection interactive du véhicule terrestre d'appui (Land Rover SF GMG RACS, Hilux, etc.) avec rendu caméra 3D dynamique.
+* **Météorologie Personnalisable :** Paramétrage temps réel de l'heure du jour (00:00 à 23:00), du brouillard (0% à 100%) et de la couverture nuageuse.
+* **Contrôle de Carte Fiabilisé :** Mini-carte vectorielle optimisée sans erreurs de textures sur les 10 secteurs d'opération (végétation, ruines, points d'intérêt touristiques).
 
 ---
 
-### 🔄 2. Moteur d'Opérations Dynamiques & Infinies
-* **Boucle de Jeu Sans Limites :** Enchaînez autant d'objectifs que souhaité sans jamais interrompre la partie.
-* **Génération Procédurale :** Placement dynamique des camps ennemis, patrouilles, otages, relais de communication et caches chimiques à travers les villages et montagnes du Takistan.
+### 🔄 2. Moteur d'Opérations Dynamiques & Modulaires
+* **Boucle de Jeu Flexible :** Choisissez entre 1 et 3 opérations prioritaires et accomplissez-les dans l'ordre de votre choix.
+* **Génération Procédurale :** Placement dynamique des camps ennemis, patrouilles, otages, relais de communication, officiers HVT et caches chimiques à travers les villages et reliefs du Takistan.
+* **Logistique Adaptative Intelligente :** L'arsenal de départ synchronise en temps réel le coffre de votre véhicule de patrouille avec les munitions, chargeurs et calibres exacts de l'armement que vous venez d'équiper.
 * **Contre-Attaque Ennemie Réactive :** À la complétion d'un objectif majeur, les cellules insurgées locales déclenchent immédiatement une manœuvre de riposte agressive (*Search & Destroy*).
-* **Extraction Cinématique à la Demande :** Demandez l'évacuation à tout moment via la molette. L'hélicoptère de soutien vient extraire votre groupe sous couverture aérienne avec retour à la base et debriefing complet.
+* **Missions d'Urgence Inopinées :** Le Commandement peut vous assigner une mission surprise par radio en cours de patrouille si vous n'avez pas d'otage sous escorte.
 
 ---
 
 ### 🕌 3. Immersion Culturelle & Vie Rurale Vivante
-* **Appel à la Prière 3D Spatialisé (Ezan) :** Diffusion audio Mono 3D ultra-réaliste depuis les minarets des mosquées avec écho naturel de vallée (2.2s - 3.4s) et algorithme anti-cacophonie (< 350m).
-* **Population Takistanaise Réaliste :**
+* **Appel à la Prière 3D Spatialisé (Ezan) :** Diffusion audio Mono 3D ultra-réaliste depuis les minarets des mosquées avec écho naturel de vallée et algorithme anti-cacophonie (< 350m).
+* **Population Takistanaise Authentique :**
   * Hommes civils vêtus de tenues traditionnelles, turbans (*Lungee*), bonnets (*Pakol*, *SkullCap*) et barbes afghanes.
   * **Présence de femmes civiles et combattantes** avec des modèles 3D féminins authentiques (*Mod Max Women*), burqas et tenues régionales.
-  * **Protocole Vocal Persan & Pachto :** Voix natives persanes (`RadioProtocolPER`) avec modulation de pitch pour des dialogues et réactions de panique authentiques.
+  * **Protocole Vocal Persan & Pachto :** Voix natives persanes (`RadioProtocolPER`) avec modulation de pitch pour des dialogues et réactions de panique réalistes.
 * **Vie Rurale & Faune :** Troupeaux de moutons procéduraux avec comportements de pâturage et dispersion sous les tirs.
 * **Profils Comportementaux IA :** 6 états psychologiques civils distincts (fuite paniquée, mise à couvert, résignation, neutralité).
 
 ---
 
 ### 🎮 4. Commandement d'Escouade & Continuité Solo
-* **Contrôle Tactique R.O.E :** Régulez instantanément la posture de vos 5 coéquipiers IA via le menu déroulant (Infiltration, Normal, Défense, Regroupement d'Urgence, Assaut).
-* **Transfert de Commandement Transparent (`fn_switchToAI`) :** Si le joueur tombe au combat, la caméra et le commandement basculent immédiatement et sans coupure sur un coéquipier IA survivant de l'escouade.
+* **Contrôle Tactique R.O.E :** Régulez instantanément la posture de vos coéquipiers IA via le menu déroulant (Infiltration, Normal, Défense, Regroupement d'Urgence, Assaut).
+* **Transfert de Commandement Transparent (`fn_switchToAI`) :** Si le joueur tombe au combat, la caméra et le commandement basculent immédiatement sur un coéquipier IA survivant de l'escouade.
 * **Auto-Soin des Unités Alliées :** Gestionnaire autonome de premiers secours permettant aux coéquipiers IA de se soigner et de stabiliser leurs blessures au combat.
+* **Discipline d'Éclairage Nocturne :** Les ennemis conservent leurs lampes éteintes dans l'obscurité et ne les allument que lors d'un engagement armé confirmé.
 * **Système Intelligent de Portes & Grilles (`fn_doorSecurity`) :** Ouverture automatique universelle des portes, volets métalliques de commerces et portails à 4.5m pour l'infanterie, avec fermeture automatique à 6.0m pour éliminer les blocages de pathfinding d'Arma 3.
 
 ---
 
-### 🚁 5. Appuis Tactiques & Armes Combinées
-* **Appui Aérien & CAS (UH-60L Black Hawk) :** Mitraillage au sol sur coordonnées désignées.
-* **Largage de Ravitaillement :** Parachutage de caisses d'armement et munitions sur votre position.
-* **Drone de Reconnaissance (MQ-9 Reaper) :** Télémétrie en temps réel et retransmission vidéo de surveillance sur zone.
-* **Radio TTS Vocale & Insignes :** Communications militaires immersives et écusson officiel brodé de la Légion Étrangère du RACS sur les gilets de combat.
+## 📻 Menu Radio Support (0-8)
+
+À tout moment, appuyez sur vos touches de communication radio **0-8** pour contacter le Commandement de la Légion :
+
+| Canal Radio | Type d'Appui Tactique | Description Opérationnelle |
+| :---: | :--- | :--- |
+| **0-8-1** | 🚁 **Appui Aérien (CAS)** | Un hélicoptère UH-60L Black Hawk intervient pour délivrer des tirs de suppression au sol sur coordonnées. |
+| **0-8-2** | 📦 **Ravitaillement par Air** | Parachutage d'une caisse de munitions et d'équipement médical d'urgence sur votre position. |
+| **0-8-3** | 🛫 **Extraction Tactique** | **Appel manuel de l'hélicoptère d'évacuation.** Définition de la LZ, sécurisation de zone et retour à la base. |
+| **0-8-4** | 🚗 **Véhicule de Remplacement** | Largage ou mise à disposition d'un véhicule de patrouille neuf si le vôtre est détruit ou immobilisé. |
+| **0-8-5** | 📡 **Drone de Reconnaissance (MQ-9)** | Déploiement d'un drone avec retransmission vidéo en direct (PiP) et télémétrie des forces ennemies sur zone. |
 
 ---
 
 ## 📋 Catalogue des Missions
 
-Chaque déploiement combine des directives d'engagement globales et des missions procédurales générées à la volée :
+Chaque déploiement combine des directives d'engagement globales et des missions procédurales sélectionnées au panneau :
 
 | Code Tâche | Type d'Opération | Description Stratégique |
 | :---: | :--- | :--- |
-| **Tâche A** | **Transit & Reconnaissance** | Déploiement initial et prise de position dans le secteur opérationnel (550m). |
-| **Tâche B** | **Protection Civile** | Préservation des civils et respect strict des règles d'engagement (ROE). |
-| **Tâche C** | **Survie du Détachement** | Préservation des effectifs de la Légion et extraction sécurisée de l'escouade. |
-| **Tâche D-00** | **Libération d'Otage** | Infiltration d'un complexe fortifié pour secourir un agent de renseignement captif. |
-| **Tâche D-01** | **Capture de Documents** | Récupération de données secrètes et plans de bataille au cœur d'un avant-poste ennemi. |
-| **Tâche D-04** | **Neutralisation Chimique** | Infiltration d'une usine clandestine et destruction de fûts de neurotoxiques. |
-| **Tâche D-08** | **Sabotage de Relais** | Destruction d'une station de transmission et d'un drone tactique *Tigris*. |
-| **Tâche D-HVT** | **Élimination de Cible (HVT)** | Traque et neutralisation d'un haut commandant insurgé retranché. |
-| **Tâche D-Trans**| **Piratage de Fréquence** | Piratage et désactivation d'un émetteur radio de propagande rebelle. |
+| **Directive 1** | **Transit & Reconnaissance** | Déploiement initial et prise de position dans le secteur opérationnel (550m). |
+| **Directive 2** | **Protection Civile** | Préservation absolue des populations civiles et respect strict des règles d'engagement. |
+| **Directive 3** | **Survie & Extraction Sécurisée** | Préservation des effectifs de la Légion et évacuation manuelle via Support `0-8-3`. |
+| **Tâche D-00** | **Libération de Captif** | Infiltration d'un complexe fortifié pour secourir un informateur ou agent captif. |
+| **Tâche D-01** | **Récupération de Documents** | Fouille méticuleuse d'un officier ou avant-poste ennemi pour récupérer des ordres secrets. |
+| **Tâche D-02** | **Élimination de Commandant (HVT)** | Traque et neutralisation ciblée d'un chef insurgé retranché dans une zone urbaine. |
+| **Tâche D-03** | **Destruction de Relais Radio** | Neutralisation d'antennes de communication rebelles à l'aide de charges d'explosifs programmées. |
+| **Tâche D-04** | **Sécurisation de Cuve Chimique** | Infiltration d'un dépôt clandestin et neutralisation de précurseurs toxiques. |
+| **Tâche D-08** | **Destruction de Tigris AA** | Localisation et destruction d'un blindé antiaérien menaçant l'espace aérien de la coalition. |
+| **Optionnelle** | **Menace Insurgée** | Activation d'embuscades civiles rares et d'insurgés infiltrés parmi la population. |
+| **Bonus** | **Tâche d'Urgence Inopinée** | Réassignation tactique inattendue du Commandement vers un nouvel objectif chaud en Takistan. |
 
 ---
 
 ## 🎖️ Règles d'Engagement & Commandement d'Escouade
 
-Gérez la tactique de votre escouade en direct via le menu dynamique (molette de la souris) :
+Gérez la tactique de votre escouade en direct via le menu déroulant (molette de la souris) :
 
 | Posture Tactique | Effet sur l'Escouade IA | Cas d'Usage Idéal |
 | :--- | :--- | :--- |
@@ -138,16 +156,12 @@ Cette mission nécessite les mods suivants, disponibles sur le **Steam Workshop*
 * [Max Women](https://steamcommunity.com/sharedfiles/filedetails/?id=1451755886)
 
 ### 2. Installation Manuelle
-1. Téléchargez ou clonez ce dépôt :
-   ```bash
-   git clone https://github.com/votre-compte/ORA.Takistan.git
-   ```
-2. Déposez le dossier `ORA.Takistan` dans votre répertoire de missions Solo Arma 3 :
+1. Téléchargez ou clonez ce dossier de mission dans votre répertoire Arma 3 :
    ```text
    C:\Users\<VotreNom>\Documents\Arma 3\missions\ORA.Takistan
    ```
-3. Lancez **Arma 3** avec les mods CUP et Max Women activés.
-4. Rendez-vous dans le menu : **Jouer** ──► **Scénarios** ──► **Operation Royal Alliance**.
+2. Lancez **Arma 3** avec les mods CUP et Max Women activés dans votre lanceur.
+3. Rendez-vous dans le menu : **Jouer** ──► **Scénarios** ──► **Operation Royal Alliance**.
 
 ---
 
@@ -163,7 +177,7 @@ La mission intègre une internationalisation native complète grâce à un pipel
 | 🇰🇷 **Coréen** | 100% | 🇨🇳 **Chinois** | 100% | 🇵🇹 **Portugais** | 100% |
 | 🇨🇿 **Tchèque** | 100% | 🌐 **Original** | 100% | | |
 
-*Pour ajouter ou modifier des traductions, consultez le guide dédié :* [`INFO_STRINTABLE.md`](file:///c:/Users/kevin/Documents/Arma%203/missions/ORA.Takistan/INFO_STRINTABLE.md).
+*Tous les sous-titres, communications radio, alertes et interfaces sont traduits dynamiquement selon la langue de votre jeu sans texte en dur résiduel.*
 
 ---
 
@@ -171,10 +185,13 @@ La mission intègre une internationalisation native complète grâce à un pipel
 
 Le code source de la mission a été conçu selon des normes strictes de modularité et de performance :
 
-* **Zéro Desync :** 100% optimisé pour le moteur Solo (pas de surcharge réseau multijoueur inutile).
+* **Zéro Desync Solo :** 100% optimisé pour le moteur Solo (aucune charge réseau superflue).
 * **Architecture Modulaire :** 54 fonctions SQF spécialisées regroupées par domaine sous `Functions/` (`Briefing/`, `Civilian/`, `Drone/`, `Environment/`, `Helicopter/`, `Medical/`, `Player/`, `Spawn/`, `Task/`, `Team/`).
-* **Documentation Exhaustive :** Pour une analyse technique détaillée fichier par fichier de l'ensemble du projet, consultez le document d'architecture :  
-  👉 **[`ARCHI.md`](file:///c:/Users/kevin/Documents/Arma%203/missions/ORA.Takistan/ARCHI.md)**
+* **Qualité Sonore & Stabilité :** Entrées `titles[]` déclarées pour toutes les émissions sonores 3D (`CfgSounds.hpp`), bande son optimisée au format OGG.
+* **Documentation Développeur Complète :**
+  * 👉 **[`ARCHI.md`](file:///c:/Users/kevin/Documents/Arma%203/missions/ORA.Takistan/ARCHI.md)** : Architecture globale détaillée de la mission.
+  * 👉 **[`CORRECTIF.md`](file:///c:/Users/kevin/Documents/Arma%203/missions/ORA.Takistan/CORRECTIF.md)** : Rapport complet de tous les correctifs appliqués.
+  * 👉 **[`INFO_STRINTABLE.md`](file:///c:/Users/kevin/Documents/Arma%203/missions/ORA.Takistan/INFO_STRINTABLE.md)** : Pipeline de traduction et standard de localisation.
 
 ---
 
@@ -184,7 +201,7 @@ Le code source de la mission a été conçu selon des normes strictes de modular
 * **Moteur & Univers :** [Bohemia Interactive](https://www.bohemia.net/) (*Arma 3*)
 * **Assets & Équipements :** [CUP Team](http://cup-arma3.org/) (*Community Upgrade Project*)
 * **Modèles Féminins :** [Max](https://steamcommunity.com/sharedfiles/filedetails/?id=1451755886) (*Max Women*)
-* **Bande Son Originale :** *Shadow of the Valley* (Tracks 01, 02, 03)
+* **Bande Son & Ambiance :** Musiques traditionnelles orientales au Rubab afghan (*Rubab 01* et *Rubab 02*) & Appel à la Prière authentique (*Ezan*).
 
 ---
 
